@@ -1,3 +1,3 @@
-module github.com/stefanvanburen/pet-store
+module github.com/stefanvanburen/petstore
 
 go 1.19

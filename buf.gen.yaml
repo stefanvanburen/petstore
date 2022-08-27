@@ -2,7 +2,7 @@ version: v1
 managed:
   enabled: true
   go_package_prefix:
-    default: github.com/svanburen/pet-store/gen/proto/go
+    default: github.com/svanburen/petstore/gen/proto/go
 plugins:
   - name: go
     out: gen
