@@ -2,11 +2,11 @@ version: v1
 managed:
   enabled: true
   go_package_prefix:
-    default: github.com/svanburen/petstore/gen/proto/go
+    default: github.com/stefanvanburen/petstore/gen/proto/go
 plugins:
   - name: go
-    out: gen
+    out: gen/proto/go
     opt: paths=source_relative
   - name: connect-go
-    out: gen
+    out: gen/proto/go
     opt: paths=source_relative
