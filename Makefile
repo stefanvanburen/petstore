@@ -3,5 +3,5 @@ clean:
 .PHONY: clean
 
 generate: clean
-	buf generate buf.build/acme/petapis
+	buf generate buf.build/acme/petapis --include-imports
 .PHONY: generate
