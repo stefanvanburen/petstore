@@ -46,5 +46,5 @@ func main() {
 	mux := http.NewServeMux()
 	path, handler := petv1connect.NewPetStoreServiceHandler(petServer)
 	mux.Handle(path, handler)
-	http.ListenAndServe("localhost:8080", mux)
+	http.ListenAndServe(":8080", mux)
 }
