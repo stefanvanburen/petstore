@@ -5,9 +5,9 @@ It's hosted on <https://fly.io>, at `petstore.fly.dev`.
 
 It currently supports the following RPCs:
 
-* `PutPet`
-* `GetPet`
-* `DeletePet`
+* [`PutPet`](https://buf.build/acme/petapis/docs/main:pet.v1#pet.v1.PetStoreService.PutPet)
+* [`GetPet`](https://buf.build/acme/petapis/docs/main:pet.v1#pet.v1.PetStoreService.GetPet)
+* [`DeletePet`](https://buf.build/acme/petapis/docs/main:pet.v1#pet.v1.PetStoreService.DeletePet)
 
 ## Usage
 
