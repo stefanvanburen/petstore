@@ -5,13 +5,12 @@ import (
 	"errors"
 	"testing"
 
+	"github.com/akshayjshah/attest"
 	"github.com/bufbuild/connect-go"
-	"github.com/matryer/is"
 	petv1 "github.com/stefanvanburen/petstore/gen/proto/go/pet/v1"
 )
 
 func TestServer(t *testing.T) {
-	is := is.New(t)
 	server := NewPetServer()
 	ctx := context.Background()
 
@@ -24,28 +23,28 @@ func TestServer(t *testing.T) {
 		PetType: givenPet.PetType,
 		Name:    givenPet.Name,
 	}))
-	is.NoErr(err)
-	is.Equal(putPetResponse.Msg.Pet.Name, givenPet.Name)
-	is.Equal(putPetResponse.Msg.Pet.PetType, givenPet.PetType)
+	attest.Ok(t, err)
+	attest.Equal(t, putPetResponse.Msg.Pet.Name, givenPet.Name)
+	attest.Equal(t, putPetResponse.Msg.Pet.PetType, givenPet.PetType)
 
 	petID := putPetResponse.Msg.Pet.PetId
 
 	getPetResponse, err := server.GetPet(ctx, connect.NewRequest(&petv1.GetPetRequest{
 		PetId: petID,
 	}))
-	is.NoErr(err)
-	is.Equal(getPetResponse.Msg.Pet.Name, givenPet.Name)
-	is.Equal(getPetResponse.Msg.Pet.PetType, givenPet.PetType)
+	attest.Ok(t, err)
+	attest.Equal(t, getPetResponse.Msg.Pet.Name, givenPet.Name)
+	attest.Equal(t, getPetResponse.Msg.Pet.PetType, givenPet.PetType)
 
 	_, err = server.DeletePet(ctx, connect.NewRequest(&petv1.DeletePetRequest{
 		PetId: petID,
 	}))
-	is.NoErr(err)
+	attest.Ok(t, err)
 
 	_, err = server.GetPet(ctx, connect.NewRequest(&petv1.GetPetRequest{
 		PetId: putPetResponse.Msg.Pet.PetId,
 	}))
 	var connectErr *connect.Error
-	is.True(errors.As(err, &connectErr))
-	is.Equal(connectErr.Code(), connect.CodeNotFound)
+	attest.True(t, errors.As(err, &connectErr))
+	attest.Equal(t, connectErr.Code(), connect.CodeNotFound)
 }
