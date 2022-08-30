@@ -11,6 +11,8 @@ It currently supports the following RPCs:
 
 ## Usage
 
+You can interact with the API with plain HTTP requests (via the [Connect protocol](https://connect.build/docs/protocol/)) with any HTTP client, such as cURL:
+
 ```console
 $ curl --header "Content-Type: application/json" --data '{"name": "Mobin", "petType": "PET_TYPE_CAT"}' https://petstore.fly.dev/pet.v1.PetStoreService/PutPet # Create a pet
 {"pet":{"petType":"PET_TYPE_CAT", "petId":"01GBR5QYN85PVN8M8N0XFEJF15", "name":"Mobin"}}
