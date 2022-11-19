@@ -24,6 +24,8 @@ $ curl --header "Content-Type: application/json" --data '{"petId": "01GBR5QYN85P
 {}
 ```
 
+You can also use [Buf Studio](https://studio.buf.build/acme/petapis/pet.v1.PetStoreService/PutPet?target=https%3A%2F%2Fpetstore.fly.dev) to interact with the API in a much more interactive way.
+
 ## Implementation details
 
 The server uses the [connect-go library](https://github.com/bufbuild/connect-go) to implement the API.
