@@ -7,8 +7,7 @@ import (
 
 	"github.com/bufbuild/connect-go"
 	"github.com/oklog/ulid/v2"
-
-	petv1 "github.com/stefanvanburen/petstore/gen/proto/go/pet/v1"
+	petv1 "go.buf.build/bufbuild/connect-go/acme/petapis/pet/v1"
 )
 
 type PetServer struct {

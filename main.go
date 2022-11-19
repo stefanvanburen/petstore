@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/rs/cors"
-	"github.com/stefanvanburen/petstore/gen/proto/go/pet/v1/petv1connect"
+	"go.buf.build/bufbuild/connect-go/acme/petapis/pet/v1/petv1connect"
 )
 
 func main() {

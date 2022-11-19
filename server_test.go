@@ -7,7 +7,7 @@ import (
 
 	"github.com/akshayjshah/attest"
 	"github.com/bufbuild/connect-go"
-	petv1 "github.com/stefanvanburen/petstore/gen/proto/go/pet/v1"
+	petv1 "go.buf.build/bufbuild/connect-go/acme/petapis/pet/v1"
 )
 
 func TestServer(t *testing.T) {
