@@ -3,5 +3,5 @@ deploy:
 .PHONY: deploy
 
 test:
-	go test # only need to test the main package for now
+	go test -race ./...
 .PHONY: test
