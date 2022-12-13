@@ -16,8 +16,7 @@ func main() {
 		w.WriteHeader(http.StatusOK)
 	})
 	// cors.Default() setup the middleware with default options being
-	// all origins accepted with simple methods (GET, POST). See
-	// documentation below for more options.
+	// all origins accepted with simple methods (GET, POST).
 	corsHandler := cors.Default().Handler(mux)
 	http.ListenAndServe(":8080", corsHandler)
 }
