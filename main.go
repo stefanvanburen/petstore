@@ -4,11 +4,12 @@ import (
 	"net/http"
 
 	"github.com/rs/cors"
+	"github.com/stefanvanburen/petstore/internal/server"
 	"go.buf.build/bufbuild/connect-go/acme/petapis/pet/v1/petv1connect"
 )
 
 func main() {
-	petServer := NewPetServer()
+	petServer := server.NewPetServer()
 	mux := http.NewServeMux()
 	path, handler := petv1connect.NewPetStoreServiceHandler(petServer)
 	mux.Handle(path, handler)
