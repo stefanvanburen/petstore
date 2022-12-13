@@ -4,20 +4,26 @@ import (
 	"context"
 	"fmt"
 	"sync"
+	"time"
 
 	"github.com/bufbuild/connect-go"
 	"github.com/oklog/ulid/v2"
 	petv1 "go.buf.build/bufbuild/connect-go/acme/petapis/pet/v1"
+	"google.golang.org/genproto/googleapis/type/datetime"
+	"google.golang.org/protobuf/types/known/durationpb"
 )
 
 type PetServer struct {
 	sync.Mutex
 	pets map[ulid.ULID]*petv1.Pet
+
+	clock clock
 }
 
 func NewPetServer() *PetServer {
 	return &PetServer{
-		pets: map[ulid.ULID]*petv1.Pet{},
+		pets:  map[ulid.ULID]*petv1.Pet{},
+		clock: systemClock{},
 	}
 }
 
@@ -43,12 +49,13 @@ func (s *PetServer) PutPet(
 ) (*connect.Response[petv1.PutPetResponse], error) {
 	s.Lock()
 	defer s.Unlock()
+	createdAt := timeToDateTime(s.clock.Now())
 	petID := ulid.Make()
 	pet := &petv1.Pet{
-		PetId:   petID.String(),
-		PetType: req.Msg.PetType,
-		Name:    req.Msg.Name,
-		// TODO: CreatedAt
+		PetId:     petID.String(),
+		PetType:   req.Msg.PetType,
+		Name:      req.Msg.Name,
+		CreatedAt: &createdAt,
 	}
 	s.pets[petID] = pet
 	return connect.NewResponse(&petv1.PutPetResponse{Pet: pet}), nil
@@ -74,4 +81,22 @@ func (s *PetServer) PurchasePet(
 	req *connect.Request[petv1.PurchasePetRequest],
 ) (*connect.Response[petv1.PurchasePetResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, fmt.Errorf("unimplemented"))
+}
+
+func timeToDateTime(t time.Time) datetime.DateTime {
+	_, offset := t.Zone()
+	return datetime.DateTime{
+		Year:    int32(t.Year()),
+		Month:   int32(t.Month()),
+		Day:     int32(t.Day()),
+		Hours:   int32(t.Hour()),
+		Minutes: int32(t.Minute()),
+		Seconds: int32(t.Second()),
+		Nanos:   int32(t.Nanosecond()),
+		TimeOffset: &datetime.DateTime_UtcOffset{
+			UtcOffset: &durationpb.Duration{
+				Seconds: int64(offset),
+			},
+		},
+	}
 }
