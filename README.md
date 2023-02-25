@@ -14,13 +14,13 @@ It currently supports the following RPCs:
 You can interact with the API with plain HTTP requests (via the [Connect protocol](https://connect.build/docs/protocol/)) with any HTTP client, such as cURL:
 
 ```console
-$ curl --header "Content-Type: application/json" --data '{"name": "Mobin", "petType": "PET_TYPE_CAT"}' https://petstore.fly.dev/pet.v1.PetStoreService/PutPet # Create a pet
-{"pet":{"petType":"PET_TYPE_CAT", "petId":"01GBR5QYN85PVN8M8N0XFEJF15", "name":"Mobin"}}
+$ buf curl --data '{"name": "Mobin", "petType": "PET_TYPE_CAT"}' --schema buf.build/acme/petapis https://petstore.fly.dev/pet.v1.PetStoreService/PutPet | jq .pet.petId # Create a pet
+"01GT4XTKXEXY74QD8H575E8NWC"
 
-$ curl --header "Content-Type: application/json" --data '{"petId": "01GBR5QYN85PVN8M8N0XFEJF15"}' https://petstore.fly.dev/pet.v1.PetStoreService/GetPet # Get a pet
-{"pet":{"petType":"PET_TYPE_CAT", "petId":"01GBR5QYN85PVN8M8N0XFEJF15", "name":"Mobin"}}
+$ buf curl --data '{"petId":"01GT4XTKXEXY74QD8H575E8NWC"}' --schema buf.build/acme/petapis https://petstore.fly.dev/pet.v1.PetStoreService/GetPet | jq .pet.name # Retrieve the pet
+"Mobin"
 
-$ curl --header "Content-Type: application/json" --data '{"petId": "01GBR5QYN85PVN8M8N0XFEJF15"}' https://petstore.fly.dev/pet.v1.PetStoreService/DeletePet # Delete a pet. :(
+$ buf curl --data '{"petId":"01GT4XTKXEXY74QD8H575E8NWC"}' --schema buf.build/acme/petapis https://petstore.fly.dev/pet.v1.PetStoreService/DeletePet # Delete a pet. :(
 {}
 ```
 
