@@ -22,6 +22,7 @@ func main() {
 		fcors.WithMethods(http.MethodPost),
 		fcors.WithRequestHeaders(
 			"connect-protocol-version",
+			"content-type",
 		),
 	)
 	if err != nil {
