@@ -8,9 +8,7 @@ require (
 	github.com/rs/cors v1.8.2
 	go.buf.build/bufbuild/connect-go/acme/petapis v1.10.7
 	google.golang.org/genproto v0.0.0-20221118155620-16455021b5e6
+	google.golang.org/protobuf v1.28.1
 )
 
-require (
-	go.buf.build/bufbuild/connect-go/acme/paymentapis v1.10.3 // indirect
-	google.golang.org/protobuf v1.28.1 // indirect
-)
+require go.buf.build/bufbuild/connect-go/acme/paymentapis v1.10.3 // indirect
