@@ -1,9 +1,10 @@
 package main
 
 import (
+	"log"
 	"net/http"
 
-	"github.com/rs/cors"
+	"github.com/jub0bs/fcors"
 	"github.com/stefanvanburen/petstore/internal/server"
 	"go.buf.build/bufbuild/connect-go/acme/petapis/pet/v1/petv1connect"
 )
@@ -16,8 +17,12 @@ func main() {
 	mux.HandleFunc("/", func(w http.ResponseWriter, _ *http.Request) {
 		w.WriteHeader(http.StatusOK)
 	})
-	// cors.Default() setup the middleware with default options being
-	// all origins accepted with simple methods (GET, POST).
-	corsHandler := cors.Default().Handler(mux)
-	http.ListenAndServe(":8080", corsHandler)
+	cors, err := fcors.AllowAccess(
+		fcors.FromOrigins("https://studio.buf.build"),
+		fcors.WithMethods(http.MethodPost),
+	)
+	if err != nil {
+		log.Fatal(err)
+	}
+	http.ListenAndServe(":8080", cors(mux))
 }
