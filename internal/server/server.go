@@ -51,6 +51,7 @@ func (s *PetServer) PutPet(
 	defer s.Unlock()
 	createdAt := timeToDateTime(s.clock.Now())
 	petID := ulid.Make()
+	now := time.Now()
 	pet := &petv1.Pet{
 		PetId:     petID.String(),
 		PetType:   req.Msg.PetType,
