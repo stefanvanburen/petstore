@@ -20,6 +20,9 @@ func main() {
 	cors, err := fcors.AllowAccess(
 		fcors.FromOrigins("https://studio.buf.build"),
 		fcors.WithMethods(http.MethodPost),
+		fcors.WithRequestHeaders(
+			"connect-protocol-version",
+		),
 	)
 	if err != nil {
 		log.Fatal(err)
