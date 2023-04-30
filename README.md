@@ -11,7 +11,8 @@ It currently supports the following RPCs:
 
 ## Usage
 
-You can interact with the API with plain HTTP requests (via the [Connect protocol](https://connect.build/docs/protocol/)) with any HTTP client, such as cURL:
+You can interact with the API with plain HTTP requests (via the [Connect protocol](https://connect.build/docs/protocol/)) with any HTTP client, such as cURL, but
+[`buf curl`](https://buf.build/docs/curl/usage/) makes it easy:
 
 ```console
 $ buf curl --data '{"name": "Mobin", "petType": "PET_TYPE_CAT"}' --schema buf.build/acme/petapis https://petstore.fly.dev/pet.v1.PetStoreService/PutPet | jq .pet.petId # Create a pet
