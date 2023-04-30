@@ -6,9 +6,9 @@ import (
 	"sync"
 	"time"
 
+	petv1 "buf.build/gen/go/acme/petapis/protocolbuffers/go/pet/v1"
 	"github.com/bufbuild/connect-go"
 	"github.com/oklog/ulid/v2"
-	petv1 "go.buf.build/bufbuild/connect-go/acme/petapis/pet/v1"
 	"google.golang.org/genproto/googleapis/type/datetime"
 	"google.golang.org/protobuf/types/known/durationpb"
 )

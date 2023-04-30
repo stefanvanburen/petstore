@@ -4,9 +4,9 @@ import (
 	"log"
 	"net/http"
 
+	"buf.build/gen/go/acme/petapis/bufbuild/connect-go/pet/v1/petv1connect"
 	"github.com/jub0bs/fcors"
 	"github.com/stefanvanburen/petstore/internal/server"
-	"go.buf.build/bufbuild/connect-go/acme/petapis/pet/v1/petv1connect"
 )
 
 func main() {

@@ -5,8 +5,8 @@ import (
 	"errors"
 	"testing"
 
+	petv1 "buf.build/gen/go/acme/petapis/protocolbuffers/go/pet/v1"
 	"github.com/bufbuild/connect-go"
-	petv1 "go.buf.build/bufbuild/connect-go/acme/petapis/pet/v1"
 )
 
 func TestServer(t *testing.T) {
