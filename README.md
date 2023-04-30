@@ -31,4 +31,6 @@ You can also use [Buf Studio](https://studio.buf.build/acme/petapis/pet.v1.PetSt
 
 The server uses the [connect-go library](https://github.com/bufbuild/connect-go) to implement the API.
 
+The packages used for interacting with the API are [remotely generated](https://buf.build/docs/bsr/remote-packages/go/) - there's no code generation in this repository.
+
 The "database" is completely in memory, so each deploy will wipe out any existing data.
