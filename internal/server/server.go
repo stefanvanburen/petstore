@@ -65,6 +65,8 @@ func (s *PetServer) DeletePet(
 	ctx context.Context,
 	req *connect.Request[petv1.DeletePetRequest],
 ) (*connect.Response[petv1.DeletePetResponse], error) {
+	s.Lock()
+	defer s.Unlock()
 	petID, err := ulid.Parse(req.Msg.PetId)
 	if err != nil {
 		return nil, connect.NewError(connect.CodeInvalidArgument, nil)
