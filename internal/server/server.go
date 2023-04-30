@@ -37,10 +37,11 @@ func (s *PetServer) GetPet(
 	if err != nil {
 		return nil, connect.NewError(connect.CodeInvalidArgument, nil)
 	}
-	if pet, ok := s.pets[petID]; ok {
-		return connect.NewResponse(&petv1.GetPetResponse{Pet: pet}), nil
+	pet, ok := s.pets[petID]
+	if !ok {
+		return nil, connect.NewError(connect.CodeNotFound, nil)
 	}
-	return nil, connect.NewError(connect.CodeNotFound, nil)
+	return connect.NewResponse(&petv1.GetPetResponse{Pet: pet}), nil
 }
 
 func (s *PetServer) PutPet(
