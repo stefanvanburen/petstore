@@ -22,7 +22,9 @@ func main() {
 	mux := http.NewServeMux()
 	mux.Handle(path, handler)
 	mux.HandleFunc("/", func(responseWriter http.ResponseWriter, _ *http.Request) {
-		responseWriter.Write(markdownToHTML(readmeMarkdown))
+		if _, err := responseWriter.Write(markdownToHTML(readmeMarkdown)); err != nil {
+			log.Printf("responseWriter.Write: %s", err)
+		}
 	})
 	cors, err := fcors.AllowAccess(
 		fcors.FromOrigins("https://studio.buf.build"),
@@ -35,7 +37,9 @@ func main() {
 	if err != nil {
 		log.Fatal(fmt.Errorf("setting up CORS: %s", err))
 	}
-	http.ListenAndServe(":8080", cors(mux))
+	// > ListenAndServe always returns a non-nil error.
+	// Ignore it.
+	_ = http.ListenAndServe(":8080", cors(mux))
 }
 
 func markdownToHTML(markdownContent []byte) []byte {
