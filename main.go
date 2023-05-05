@@ -3,6 +3,7 @@ package main
 import (
 	_ "embed"
 	"fmt"
+	"html/template"
 	"log"
 	"net/http"
 
@@ -14,15 +15,23 @@ import (
 	"github.com/stefanvanburen/petstore/internal/server"
 )
 
-//go:embed README.md
-var readmeMarkdown []byte
+var (
+	//go:embed README.md
+	readmeMarkdown []byte
+	//go:embed wrapper.html.tmpl
+	htmlTemplate string
+)
 
 func main() {
+	wrapperTemplate := template.Must(template.New("index.html").Parse(htmlTemplate))
 	path, handler := petv1connect.NewPetStoreServiceHandler(server.NewPetServer())
 	mux := http.NewServeMux()
 	mux.Handle(path, handler)
 	mux.HandleFunc("/", func(responseWriter http.ResponseWriter, _ *http.Request) {
-		if _, err := responseWriter.Write(markdownToHTML(readmeMarkdown)); err != nil {
+		if err := wrapperTemplate.Execute(
+			responseWriter,
+			template.HTML(string(markdownToHTML(readmeMarkdown))),
+		); err != nil {
 			log.Printf("responseWriter.Write: %s", err)
 		}
 	})
