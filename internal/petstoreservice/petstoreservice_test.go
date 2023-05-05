@@ -1,4 +1,4 @@
-package server
+package petstoreservice
 
 import (
 	"context"
@@ -9,8 +9,8 @@ import (
 	"github.com/bufbuild/connect-go"
 )
 
-func TestServer(t *testing.T) {
-	server := NewPetServer()
+func TestPetStoreService(t *testing.T) {
+	petstoreservice := New()
 	ctx := context.Background()
 
 	givenPet := &petv1.Pet{
@@ -18,7 +18,7 @@ func TestServer(t *testing.T) {
 		Name:    "Mobin",
 	}
 
-	putPetResponse, err := server.PutPet(ctx, connect.NewRequest(&petv1.PutPetRequest{
+	putPetResponse, err := petstoreservice.PutPet(ctx, connect.NewRequest(&petv1.PutPetRequest{
 		PetType: givenPet.PetType,
 		Name:    givenPet.Name,
 	}))
@@ -35,7 +35,7 @@ func TestServer(t *testing.T) {
 
 	petID := putPetResponse.Msg.Pet.PetId
 
-	getPetResponse, err := server.GetPet(ctx, connect.NewRequest(&petv1.GetPetRequest{
+	getPetResponse, err := petstoreservice.GetPet(ctx, connect.NewRequest(&petv1.GetPetRequest{
 		PetId: petID,
 	}))
 	if err != nil {
@@ -49,14 +49,14 @@ func TestServer(t *testing.T) {
 		t.Errorf("GetPet: got %v type, want %v type", gotGetPet.PetType, givenPet.PetType)
 	}
 
-	_, err = server.DeletePet(ctx, connect.NewRequest(&petv1.DeletePetRequest{
+	_, err = petstoreservice.DeletePet(ctx, connect.NewRequest(&petv1.DeletePetRequest{
 		PetId: petID,
 	}))
 	if err != nil {
 		t.Errorf("DeletePet: got %v, want err = nil", err)
 	}
 
-	_, err = server.GetPet(ctx, connect.NewRequest(&petv1.GetPetRequest{
+	_, err = petstoreservice.GetPet(ctx, connect.NewRequest(&petv1.GetPetRequest{
 		PetId: putPetResponse.Msg.Pet.PetId,
 	}))
 	var connectErr *connect.Error

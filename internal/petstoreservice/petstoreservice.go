@@ -1,4 +1,4 @@
-package server
+package petstoreservice
 
 import (
 	"context"
@@ -13,21 +13,21 @@ import (
 	"google.golang.org/protobuf/types/known/durationpb"
 )
 
-type PetServer struct {
+type PetStoreService struct {
 	sync.Mutex
 	pets map[ulid.ULID]*petv1.Pet
 
 	clock clock
 }
 
-func NewPetServer() *PetServer {
-	return &PetServer{
+func New() *PetStoreService {
+	return &PetStoreService{
 		pets:  map[ulid.ULID]*petv1.Pet{},
 		clock: systemClock{},
 	}
 }
 
-func (s *PetServer) GetPet(
+func (s *PetStoreService) GetPet(
 	ctx context.Context,
 	req *connect.Request[petv1.GetPetRequest],
 ) (*connect.Response[petv1.GetPetResponse], error) {
@@ -44,7 +44,7 @@ func (s *PetServer) GetPet(
 	return connect.NewResponse(&petv1.GetPetResponse{Pet: pet}), nil
 }
 
-func (s *PetServer) PutPet(
+func (s *PetStoreService) PutPet(
 	ctx context.Context,
 	req *connect.Request[petv1.PutPetRequest],
 ) (*connect.Response[petv1.PutPetResponse], error) {
@@ -62,7 +62,7 @@ func (s *PetServer) PutPet(
 	return connect.NewResponse(&petv1.PutPetResponse{Pet: pet}), nil
 }
 
-func (s *PetServer) DeletePet(
+func (s *PetStoreService) DeletePet(
 	ctx context.Context,
 	req *connect.Request[petv1.DeletePetRequest],
 ) (*connect.Response[petv1.DeletePetResponse], error) {
@@ -79,7 +79,7 @@ func (s *PetServer) DeletePet(
 	return connect.NewResponse(&petv1.DeletePetResponse{}), nil
 }
 
-func (s *PetServer) PurchasePet(
+func (s *PetStoreService) PurchasePet(
 	ctx context.Context,
 	req *connect.Request[petv1.PurchasePetRequest],
 ) (*connect.Response[petv1.PurchasePetResponse], error) {

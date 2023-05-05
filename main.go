@@ -13,7 +13,7 @@ import (
 	"github.com/gomarkdown/markdown/html"
 	"github.com/gomarkdown/markdown/parser"
 	"github.com/jub0bs/fcors"
-	"github.com/stefanvanburen/petstore/internal/server"
+	"github.com/stefanvanburen/petstore/internal/petstoreservice"
 )
 
 var (
@@ -35,7 +35,7 @@ func run() error {
 	if err != nil {
 		return fmt.Errorf("parsing template: %s", err)
 	}
-	path, handler := petv1connect.NewPetStoreServiceHandler(server.NewPetServer())
+	path, handler := petv1connect.NewPetStoreServiceHandler(petstoreservice.New())
 	mux := http.NewServeMux()
 	mux.Handle(path, handler)
 	mux.HandleFunc("/", func(responseWriter http.ResponseWriter, _ *http.Request) {
