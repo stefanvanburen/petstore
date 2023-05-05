@@ -6,6 +6,7 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"os"
 
 	"buf.build/gen/go/acme/petapis/bufbuild/connect-go/pet/v1/petv1connect"
 	"github.com/gomarkdown/markdown"
@@ -23,7 +24,17 @@ var (
 )
 
 func main() {
-	wrapperTemplate := template.Must(template.New("index.html").Parse(htmlTemplate))
+	if err := run(); err != nil {
+		log.Printf("error: %s", err)
+		os.Exit(1)
+	}
+}
+
+func run() error {
+	wrapperTemplate, err := template.New("index.html").Parse(htmlTemplate)
+	if err != nil {
+		return fmt.Errorf("parsing template: %s", err)
+	}
 	path, handler := petv1connect.NewPetStoreServiceHandler(server.NewPetServer())
 	mux := http.NewServeMux()
 	mux.Handle(path, handler)
@@ -44,11 +55,12 @@ func main() {
 		),
 	)
 	if err != nil {
-		log.Fatal(fmt.Errorf("setting up CORS: %s", err))
+		return fmt.Errorf("setting up CORS: %s", err)
 	}
 	// > ListenAndServe always returns a non-nil error.
 	// Ignore it.
 	_ = http.ListenAndServe(":8080", cors(mux))
+	return nil
 }
 
 func markdownToHTML(markdownContent []byte) []byte {
