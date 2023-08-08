@@ -25,7 +25,7 @@ $ buf curl --data '{"petId":"01GT4XTKXEXY74QD8H575E8NWC"}' --schema buf.build/ac
 {}
 ```
 
-You can also use [Buf Studio](https://studio.buf.build/acme/petapis/pet.v1.PetStoreService/PutPet?target=https%3A%2F%2Fpetstore.fly.dev) to interact with the API in a much more interactive way.
+You can also use [Buf Studio](https://buf.build/studio/acme/petapis/pet.v1.PetStoreService/PutPet?target=https%3A%2F%2Fpetstore.fly.dev) to interact with the API in a much more interactive way.
 
 ## Implementation details
 
