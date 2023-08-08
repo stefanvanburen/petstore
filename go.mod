@@ -10,7 +10,7 @@ require (
 	github.com/jub0bs/fcors v0.2.0
 	github.com/oklog/ulid/v2 v2.1.0
 	google.golang.org/genproto v0.0.0-20221118155620-16455021b5e6
-	google.golang.org/protobuf v1.30.0
+	google.golang.org/protobuf v1.31.0
 )
 
 require (
