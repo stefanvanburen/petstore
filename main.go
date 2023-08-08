@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"os"
 
-	"buf.build/gen/go/acme/petapis/bufbuild/connect-go/pet/v1/petv1connect"
+	"buf.build/gen/go/acme/petapis/connectrpc/go/pet/v1/petv1connect"
 	"github.com/gomarkdown/markdown"
 	"github.com/gomarkdown/markdown/html"
 	"github.com/gomarkdown/markdown/parser"

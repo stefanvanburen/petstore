@@ -7,7 +7,7 @@ import (
 	"time"
 
 	petv1 "buf.build/gen/go/acme/petapis/protocolbuffers/go/pet/v1"
-	"github.com/bufbuild/connect-go"
+	"connectrpc.com/connect"
 	"github.com/oklog/ulid/v2"
 	"google.golang.org/genproto/googleapis/type/datetime"
 	"google.golang.org/protobuf/types/known/durationpb"

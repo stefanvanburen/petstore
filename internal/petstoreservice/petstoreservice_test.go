@@ -6,7 +6,7 @@ import (
 	"testing"
 
 	petv1 "buf.build/gen/go/acme/petapis/protocolbuffers/go/pet/v1"
-	"github.com/bufbuild/connect-go"
+	"connectrpc.com/connect"
 )
 
 func TestPetStoreService(t *testing.T) {
