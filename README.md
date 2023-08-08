@@ -12,7 +12,7 @@ It currently supports the following RPCs:
 
 ## Usage
 
-You can interact with the API with plain HTTP requests (via the [Connect protocol](https://connect.build/docs/protocol/)) with any HTTP client, such as cURL, but
+You can interact with the API with plain HTTP requests (via the [Connect protocol](https://connectrpc.com/docs/protocol/)) with any HTTP client, such as cURL, but
 [`buf curl`](https://buf.build/docs/curl/usage/) makes it easy:
 
 ```console
