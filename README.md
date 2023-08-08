@@ -2,6 +2,7 @@
 
 This is a Go server that implements the [PetStoreService API](https://buf.build/acme/petapis/docs/main:pet.v1#pet.v1.PetStoreService).
 It's hosted on [fly.io](https://fly.io), at `petstore.fly.dev`.
+The source code is at https://github.com/stefanvanburen/petstore.
 
 It currently supports the following RPCs:
 
