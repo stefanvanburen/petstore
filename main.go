@@ -47,7 +47,7 @@ func run() error {
 		}
 	})
 	cors, err := fcors.AllowAccess(
-		fcors.FromOrigins("https://studio.buf.build"),
+		fcors.FromOrigins("https://buf.build"),
 		fcors.WithMethods(http.MethodPost),
 		fcors.WithRequestHeaders(
 			"connect-protocol-version",
