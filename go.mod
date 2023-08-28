@@ -3,9 +3,9 @@ module github.com/stefanvanburen/petstore
 go 1.19
 
 require (
-	buf.build/gen/go/acme/petapis/connectrpc/go v1.11.0-20220907172654-7abdb7802c8f.1
+	buf.build/gen/go/acme/petapis/connectrpc/go v1.11.1-20220907172654-7abdb7802c8f.1
 	buf.build/gen/go/acme/petapis/protocolbuffers/go v1.31.0-20220907172654-7abdb7802c8f.1
-	connectrpc.com/connect v1.11.0
+	connectrpc.com/connect v1.11.1
 	github.com/gomarkdown/markdown v0.0.0-20230322041520-c84983bdbf2a
 	github.com/jub0bs/fcors v0.6.0
 	github.com/oklog/ulid/v2 v2.1.0
