@@ -1,11 +1,11 @@
 buf.build/gen/go/acme/paymentapis/protocolbuffers/go v1.31.0-20220907172603-9a877cf260e1.1 h1:jhWggKWY0FOS0vPWuWLP97uiqyLg9We1nWf+mV5ouuw=
 buf.build/gen/go/acme/paymentapis/protocolbuffers/go v1.31.0-20220907172603-9a877cf260e1.1/go.mod h1:m6BvyncqxET72ob7u3IgMDdd+9zXt55juaXG7JZ8wMs=
-buf.build/gen/go/acme/petapis/connectrpc/go v1.11.0-20220907172654-7abdb7802c8f.1 h1:PzNkhTX9GtsxD/Ud98OQN3UHy3DFoFZBhXpdozz0OWQ=
-buf.build/gen/go/acme/petapis/connectrpc/go v1.11.0-20220907172654-7abdb7802c8f.1/go.mod h1:ZDltyLAZpi3fRNzj9nZ7wYEBki5nTKO5mdFmmUJiwos=
+buf.build/gen/go/acme/petapis/connectrpc/go v1.11.1-20220907172654-7abdb7802c8f.1 h1:ZsHQqYyxa+9BEqLjPWNhcHmSef/6dBqz7FhSSnL5VAU=
+buf.build/gen/go/acme/petapis/connectrpc/go v1.11.1-20220907172654-7abdb7802c8f.1/go.mod h1:0QIjFFt/Ax8TEfWtiTSkE/ROOVB7xFgwehtPxGl3fQg=
 buf.build/gen/go/acme/petapis/protocolbuffers/go v1.31.0-20220907172654-7abdb7802c8f.1 h1:BuDhsUgvVjO2fTeRWBg4gEocvl4RtWvVCVhbR8kH70c=
 buf.build/gen/go/acme/petapis/protocolbuffers/go v1.31.0-20220907172654-7abdb7802c8f.1/go.mod h1:EgRkTojff60Ezfc1iTKGVmWuN7AWJ6ccwRfSiZY4asw=
-connectrpc.com/connect v1.11.0 h1:Av2KQXxSaX4vjqhf5Cl01SX4dqYADQ38eBtr84JSUBk=
-connectrpc.com/connect v1.11.0/go.mod h1:3AGaO6RRGMx5IKFfqbe3hvK1NqLosFNP2BxDYTPmNPo=
+connectrpc.com/connect v1.11.1 h1:dqRwblixqkVh+OFBOOL1yIf1jS/yP0MSJLijRj29bFg=
+connectrpc.com/connect v1.11.1/go.mod h1:3AGaO6RRGMx5IKFfqbe3hvK1NqLosFNP2BxDYTPmNPo=
 github.com/golang/protobuf v1.5.0/go.mod h1:FsONVRAS9T7sI+LIUmWTfcYkHO4aIWwzhcaSAoJOfIk=
 github.com/gomarkdown/markdown v0.0.0-20230322041520-c84983bdbf2a h1:AWZzzFrqyjYlRloN6edwTLTUbKxf5flLXNuTBDm3Ews=
 github.com/gomarkdown/markdown v0.0.0-20230322041520-c84983bdbf2a/go.mod h1:JDGcbDT52eL4fju3sZ4TeHGsQwhG9nbDV21aMyhwPoA=
