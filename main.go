@@ -4,7 +4,7 @@ import (
 	_ "embed"
 	"fmt"
 	"html/template"
-	"log"
+	"log/slog"
 	"net/http"
 	"os"
 
@@ -27,7 +27,7 @@ var (
 
 func main() {
 	if err := run(); err != nil {
-		log.Printf("error: %s", err)
+		slog.Error("run", "error", err)
 		os.Exit(1)
 	}
 }
@@ -47,9 +47,11 @@ func run() error {
 	mux := http.NewServeMux()
 	mux.Handle(path, handler)
 	mux.Handle(grpcreflect.NewHandlerV1(reflector))
-	mux.HandleFunc("/", func(responseWriter http.ResponseWriter, _ *http.Request) {
+	mux.HandleFunc("/", func(responseWriter http.ResponseWriter, request *http.Request) {
 		if err := checkedTemplate.Execute(responseWriter, readmeHTML); err != nil {
-			log.Printf("responseWriter.Write: %s", err)
+			slog.ErrorContext(request.Context(), "checkedTemplate.Execute", "error", err)
+			http.Error(responseWriter, err.Error(), http.StatusInternalServerError)
+			return
 		}
 	})
 	cors, err := fcors.AllowAccess(
