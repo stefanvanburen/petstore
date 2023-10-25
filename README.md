@@ -16,13 +16,25 @@ You can interact with the API with plain HTTP requests (via the [Connect protoco
 [`buf curl`](https://buf.build/docs/curl/usage/) makes it easy:
 
 ```console
-$ buf curl --data '{"name": "Mobin", "petType": "PET_TYPE_CAT"}' --schema buf.build/acme/petapis https://petstore.fly.dev/pet.v1.PetStoreService/PutPet | jq .pet.petId # Create a pet
+$ # Create a pet
+$ buf curl \
+  --data '{"name": "Mobin", "petType": "PET_TYPE_CAT"}' \
+  --schema buf.build/acme/petapis \
+  https://petstore.fly.dev/pet.v1.PetStoreService/PutPet | jq .pet.petId
 "01GT4XTKXEXY74QD8H575E8NWC"
 
-$ buf curl --data '{"petId":"01GT4XTKXEXY74QD8H575E8NWC"}' --schema buf.build/acme/petapis https://petstore.fly.dev/pet.v1.PetStoreService/GetPet | jq .pet.name # Retrieve the pet
+$ # Retrieve a pet
+$ buf curl \
+  --data '{"petId":"01GT4XTKXEXY74QD8H575E8NWC"}' \
+  --schema buf.build/acme/petapis \
+  https://petstore.fly.dev/pet.v1.PetStoreService/GetPet | jq .pet.name
 "Mobin"
 
-$ buf curl --data '{"petId":"01GT4XTKXEXY74QD8H575E8NWC"}' --schema buf.build/acme/petapis https://petstore.fly.dev/pet.v1.PetStoreService/DeletePet # Delete a pet. :(
+$ # Delete a pet. :(
+$ buf curl \
+  --data '{"petId":"01GT4XTKXEXY74QD8H575E8NWC"}' \
+  --schema buf.build/acme/petapis \
+  https://petstore.fly.dev/pet.v1.PetStoreService/DeletePet
 {}
 ```
 
