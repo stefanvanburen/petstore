@@ -9,6 +9,7 @@ import (
 	"os"
 
 	"buf.build/gen/go/acme/petapis/connectrpc/go/pet/v1/petv1connect"
+	"connectrpc.com/grpcreflect"
 	"github.com/gomarkdown/markdown"
 	"github.com/gomarkdown/markdown/html"
 	"github.com/gomarkdown/markdown/parser"
@@ -36,8 +37,10 @@ func run() error {
 		return fmt.Errorf("parsing template: %s", err)
 	}
 	path, handler := petv1connect.NewPetStoreServiceHandler(petstoreservice.New())
+	reflector := grpcreflect.NewStaticReflector(petv1connect.PetStoreServiceName)
 	mux := http.NewServeMux()
 	mux.Handle(path, handler)
+	mux.Handle(grpcreflect.NewHandlerV1(reflector))
 	mux.HandleFunc("/", func(responseWriter http.ResponseWriter, _ *http.Request) {
 		if err := wrapperTemplate.Execute(
 			responseWriter,

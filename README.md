@@ -19,21 +19,18 @@ You can interact with the API with plain HTTP requests (via the [Connect protoco
 $ # Create a pet
 $ buf curl \
   --data '{"name": "Mobin", "petType": "PET_TYPE_CAT"}' \
-  --schema buf.build/acme/petapis \
   https://petstore.fly.dev/pet.v1.PetStoreService/PutPet | jq .pet.petId
 "01GT4XTKXEXY74QD8H575E8NWC"
 
 $ # Retrieve a pet
 $ buf curl \
   --data '{"petId":"01GT4XTKXEXY74QD8H575E8NWC"}' \
-  --schema buf.build/acme/petapis \
   https://petstore.fly.dev/pet.v1.PetStoreService/GetPet | jq .pet.name
 "Mobin"
 
 $ # Delete a pet. :(
 $ buf curl \
   --data '{"petId":"01GT4XTKXEXY74QD8H575E8NWC"}' \
-  --schema buf.build/acme/petapis \
   https://petstore.fly.dev/pet.v1.PetStoreService/DeletePet
 {}
 ```
@@ -42,7 +39,7 @@ You can also use [Buf Studio](https://buf.build/studio/acme/petapis/pet.v1.PetSt
 
 ## Implementation details
 
-The server uses the [connect-go library](https://github.com/connectrpc/connect-go) to implement the API.
+The server uses the [connect-go library](https://github.com/connectrpc/connect-go) to implement the API, with [grpcreflect-go](https://github.com/connectrpc/grpcreflect-go) adding support for the gRPC server reflection API.
 
 The packages used for interacting with the API are [remotely generated](https://buf.build/docs/bsr/remote-packages/go/) - there's no code generation in this repository.
 
