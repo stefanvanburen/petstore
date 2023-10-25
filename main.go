@@ -13,6 +13,7 @@ import (
 	"github.com/gomarkdown/markdown"
 	"github.com/gomarkdown/markdown/html"
 	"github.com/gomarkdown/markdown/parser"
+	"github.com/jba/templatecheck"
 	"github.com/jub0bs/fcors"
 	"github.com/stefanvanburen/petstore/internal/petstoreservice"
 )
@@ -36,16 +37,18 @@ func run() error {
 	if err != nil {
 		return fmt.Errorf("parsing template: %s", err)
 	}
+	checkedTemplate, err := templatecheck.NewChecked[template.HTML](wrapperTemplate)
+	if err != nil {
+		return fmt.Errorf("creating checked template: %s", err)
+	}
+	readmeHTML := template.HTML(string(markdownToHTML(readmeMarkdown)))
 	path, handler := petv1connect.NewPetStoreServiceHandler(petstoreservice.New())
 	reflector := grpcreflect.NewStaticReflector(petv1connect.PetStoreServiceName)
 	mux := http.NewServeMux()
 	mux.Handle(path, handler)
 	mux.Handle(grpcreflect.NewHandlerV1(reflector))
 	mux.HandleFunc("/", func(responseWriter http.ResponseWriter, _ *http.Request) {
-		if err := wrapperTemplate.Execute(
-			responseWriter,
-			template.HTML(string(markdownToHTML(readmeMarkdown))),
-		); err != nil {
+		if err := checkedTemplate.Execute(responseWriter, readmeHTML); err != nil {
 			log.Printf("responseWriter.Write: %s", err)
 		}
 	})
