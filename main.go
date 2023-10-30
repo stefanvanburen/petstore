@@ -10,17 +10,15 @@ import (
 
 	"buf.build/gen/go/acme/petapis/connectrpc/go/pet/v1/petv1connect"
 	"connectrpc.com/grpcreflect"
-	"github.com/gomarkdown/markdown"
-	"github.com/gomarkdown/markdown/html"
-	"github.com/gomarkdown/markdown/parser"
 	"github.com/jba/templatecheck"
 	"github.com/jub0bs/fcors"
 	"github.com/stefanvanburen/petstore/internal/petstoreservice"
+	"rsc.io/markdown"
 )
 
 var (
 	//go:embed README.md
-	readmeMarkdown []byte
+	readmeMarkdown string
 	//go:embed wrapper.html.tmpl
 	htmlTemplate string
 )
@@ -46,7 +44,7 @@ func run() error {
 	if err != nil {
 		return fmt.Errorf("creating checked template: %s", err)
 	}
-	readmeHTML := template.HTML(string(markdownToHTML(readmeMarkdown)))
+	readmeHTML := template.HTML(markdown.ToHTML(markdown.Parse(readmeMarkdown)))
 	path, handler := petv1connect.NewPetStoreServiceHandler(petstoreservice.New())
 	reflector := grpcreflect.NewStaticReflector(petv1connect.PetStoreServiceName)
 	mux := http.NewServeMux()
@@ -78,11 +76,4 @@ func run() error {
 	// Ignore it.
 	_ = http.ListenAndServe(":"+port, cors(mux))
 	return nil
-}
-
-func markdownToHTML(markdownContent []byte) []byte {
-	return markdown.Render(
-		parser.New().Parse(markdownContent),
-		html.NewRenderer(html.RendererOptions{Flags: html.CommonFlags}),
-	)
 }
