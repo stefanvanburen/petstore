@@ -73,5 +73,15 @@ func (s *PetStoreService) PurchasePet(
 	ctx context.Context,
 	req *connect.Request[petv1.PurchasePetRequest],
 ) (*connect.Response[petv1.PurchasePetResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, fmt.Errorf("unimplemented"))
+	s.Lock()
+	defer s.Unlock()
+	petID, err := ulid.Parse(req.Msg.PetId)
+	if err != nil {
+		return nil, connect.NewError(connect.CodeInvalidArgument, nil)
+	}
+	if _, ok := s.pets[petID]; !ok {
+		return nil, connect.NewError(connect.CodeNotFound, fmt.Errorf("pet %q not found", petID))
+	}
+	delete(s.pets, petID)
+	return connect.NewResponse(&petv1.PurchasePetResponse{}), nil
 }
