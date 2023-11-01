@@ -67,7 +67,7 @@ func run() error {
 	}
 
 	return http.ListenAndServe(
-		":8080",
+		":54321",
 		h2c.NewHandler(cors(mux), &http2.Server{}),
 	)
 }

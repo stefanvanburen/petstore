@@ -10,12 +10,9 @@ auto_rollback = true
 builder = "paketobuildpacks/builder:base"
 buildpacks = ["gcr.io/paketo-buildpacks/go"]
 
-[env]
-PORT = "8080"
-
 [[services]]
 protocol = "tcp"
-internal_port = 8080
+internal_port = 54321
 processes = ["app"]
 
 [[services.ports]]
