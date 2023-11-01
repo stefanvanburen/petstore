@@ -13,6 +13,8 @@ import (
 	"github.com/jba/templatecheck"
 	"github.com/jub0bs/fcors"
 	"github.com/stefanvanburen/petstore/internal/petstoreservice"
+	"golang.org/x/net/http2"
+	"golang.org/x/net/http2/h2c"
 	"rsc.io/markdown"
 )
 
@@ -40,10 +42,10 @@ func run() error {
 		return fmt.Errorf("creating checked template: %s", err)
 	}
 	readmeHTML := template.HTML(markdown.ToHTML(markdown.Parse(readmeMarkdown)))
-	path, handler := petv1connect.NewPetStoreServiceHandler(petstoreservice.New())
-	reflector := grpcreflect.NewStaticReflector(petv1connect.PetStoreServiceName)
 	mux := http.NewServeMux()
+	path, handler := petv1connect.NewPetStoreServiceHandler(petstoreservice.New())
 	mux.Handle(path, handler)
+	reflector := grpcreflect.NewStaticReflector(petv1connect.PetStoreServiceName)
 	mux.Handle(grpcreflect.NewHandlerV1(reflector))
 	mux.HandleFunc("/", func(responseWriter http.ResponseWriter, request *http.Request) {
 		if err := checkedTemplate.Execute(responseWriter, readmeHTML); err != nil {
@@ -63,8 +65,9 @@ func run() error {
 	if err != nil {
 		return fmt.Errorf("setting up CORS: %s", err)
 	}
-	// > ListenAndServe always returns a non-nil error.
-	// Ignore it.
-	_ = http.ListenAndServe(":8080", cors(mux))
-	return nil
+
+	return http.ListenAndServe(
+		":8080",
+		h2c.NewHandler(cors(mux), &http2.Server{}),
+	)
 }
