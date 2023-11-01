@@ -31,11 +31,6 @@ func main() {
 }
 
 func run() error {
-	// Set in fly.toml
-	port := "8080"
-	if envPort := os.Getenv("PORT"); envPort != "" {
-		port = envPort
-	}
 	wrapperTemplate, err := template.New("index.html").Parse(htmlTemplate)
 	if err != nil {
 		return fmt.Errorf("parsing template: %s", err)
@@ -57,10 +52,6 @@ func run() error {
 			return
 		}
 	})
-	// healthcheck route from fly.toml
-	mux.HandleFunc("/health", func(responseWriter http.ResponseWriter, _ *http.Request) {
-		responseWriter.WriteHeader(200)
-	})
 	cors, err := fcors.AllowAccess(
 		fcors.FromOrigins("https://buf.build"),
 		fcors.WithMethods(http.MethodPost),
@@ -74,6 +65,6 @@ func run() error {
 	}
 	// > ListenAndServe always returns a non-nil error.
 	// Ignore it.
-	_ = http.ListenAndServe(":"+port, cors(mux))
+	_ = http.ListenAndServe(":8080", cors(mux))
 	return nil
 }
