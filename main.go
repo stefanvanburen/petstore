@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	_ "embed"
 	"fmt"
 	"html/template"
@@ -39,6 +40,7 @@ func run() error {
 	if port == "" {
 		port = defaultPort
 	}
+
 	wrapperTemplate, err := template.New("index.html").Parse(htmlTemplate)
 	if err != nil {
 		return fmt.Errorf("parsing template: %s", err)
@@ -48,11 +50,15 @@ func run() error {
 		return fmt.Errorf("creating checked template: %s", err)
 	}
 	readmeHTML := template.HTML(markdown.ToHTML(markdown.Parse(readmeMarkdown)))
+
 	mux := http.NewServeMux()
-	path, handler := petv1connect.NewPetStoreServiceHandler(petstoreservice.New())
-	mux.Handle(path, handler)
+
+	petStoreServicePath, petStoreServiceHandler := petv1connect.NewPetStoreServiceHandler(petstoreservice.New())
+	mux.Handle(petStoreServicePath, petStoreServiceHandler)
+
 	reflector := grpcreflect.NewStaticReflector(petv1connect.PetStoreServiceName)
 	mux.Handle(grpcreflect.NewHandlerV1(reflector))
+
 	mux.HandleFunc("/", func(responseWriter http.ResponseWriter, request *http.Request) {
 		if err := checkedTemplate.Execute(responseWriter, readmeHTML); err != nil {
 			slog.ErrorContext(request.Context(), "checkedTemplate.Execute", "error", err)
@@ -60,6 +66,8 @@ func run() error {
 			return
 		}
 	})
+
+	// Allow access from Buf Studio.
 	cors, err := fcors.AllowAccess(
 		fcors.FromOrigins("https://buf.build"),
 		fcors.WithMethods(http.MethodPost),
@@ -71,11 +79,12 @@ func run() error {
 	if err != nil {
 		return fmt.Errorf("setting up CORS: %s", err)
 	}
+	handler := cors(mux)
 
 	slog.InfoContext(context.Background(), "starting PetStore server", "port", port)
 
 	return http.ListenAndServe(
 		":"+port,
-		h2c.NewHandler(cors(mux), &http2.Server{}),
+		h2c.NewHandler(handler, &http2.Server{}),
 	)
 }
