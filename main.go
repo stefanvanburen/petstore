@@ -72,6 +72,8 @@ func run() error {
 		return fmt.Errorf("setting up CORS: %s", err)
 	}
 
+	slog.InfoContext(context.Background(), "starting PetStore server", "port", port)
+
 	return http.ListenAndServe(
 		":"+port,
 		h2c.NewHandler(cors(mux), &http2.Server{}),
