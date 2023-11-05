@@ -18,6 +18,8 @@ import (
 	"rsc.io/markdown"
 )
 
+const defaultPort = "54321"
+
 var (
 	//go:embed README.md
 	readmeMarkdown string
@@ -33,6 +35,10 @@ func main() {
 }
 
 func run() error {
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = defaultPort
+	}
 	wrapperTemplate, err := template.New("index.html").Parse(htmlTemplate)
 	if err != nil {
 		return fmt.Errorf("parsing template: %s", err)
@@ -67,7 +73,7 @@ func run() error {
 	}
 
 	return http.ListenAndServe(
-		":54321",
+		":"+port,
 		h2c.NewHandler(cors(mux), &http2.Server{}),
 	)
 }
