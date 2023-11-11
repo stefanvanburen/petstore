@@ -16,5 +16,6 @@ internal_port = 54321
 processes = ["app"]
 
 [[services.ports]]
-handlers = ["tls", "http"]
+handlers = ["tls"]
 port = 443
+tls_options = { "alpn" = ["h2"] }
