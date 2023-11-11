@@ -58,6 +58,7 @@ func run() error {
 
 	reflector := grpcreflect.NewStaticReflector(petv1connect.PetStoreServiceName)
 	mux.Handle(grpcreflect.NewHandlerV1(reflector))
+	mux.Handle(grpcreflect.NewHandlerV1Alpha(reflector))
 
 	mux.HandleFunc("/", func(responseWriter http.ResponseWriter, request *http.Request) {
 		if err := checkedTemplate.Execute(responseWriter, readmeHTML); err != nil {
