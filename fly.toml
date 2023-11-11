@@ -18,4 +18,3 @@ processes = ["app"]
 [[services.ports]]
 handlers = ["tls", "http"]
 port = 443
-tls_options = { "alpn" = ["h2"] }
