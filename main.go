@@ -14,8 +14,6 @@ import (
 	"github.com/jba/templatecheck"
 	"github.com/jub0bs/fcors"
 	"github.com/stefanvanburen/petstore/internal/petstoreservice"
-	"golang.org/x/net/http2"
-	"golang.org/x/net/http2/h2c"
 	"rsc.io/markdown"
 )
 
@@ -84,8 +82,5 @@ func run() error {
 
 	slog.InfoContext(context.Background(), "starting PetStore server", "port", port)
 
-	return http.ListenAndServe(
-		":"+port,
-		h2c.NewHandler(handler, &http2.Server{}),
-	)
+	return http.ListenAndServe(":"+port, handler)
 }
