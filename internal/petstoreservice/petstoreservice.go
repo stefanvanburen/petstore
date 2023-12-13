@@ -36,7 +36,7 @@ func (s *PetStoreService) GetPet(
 	}
 	pet, ok := s.pets[petID]
 	if !ok {
-		return nil, connect.NewError(connect.CodeNotFound, fmt.Errorf("finding pet by id"))
+		return nil, connect.NewError(connect.CodeNotFound, fmt.Errorf("pet %q not found", petID))
 	}
 	return connect.NewResponse(&petv1.GetPetResponse{Pet: pet.ToProto()}), nil
 }
@@ -63,7 +63,7 @@ func (s *PetStoreService) DeletePet(
 		return nil, connect.NewError(connect.CodeInvalidArgument, fmt.Errorf("parsing pet id: %s", err))
 	}
 	if _, ok := s.pets[petID]; !ok {
-		return nil, connect.NewError(connect.CodeNotFound, fmt.Errorf("finding pet by id"))
+		return nil, connect.NewError(connect.CodeNotFound, fmt.Errorf("pet %q not found", petID))
 	}
 	delete(s.pets, petID)
 	return connect.NewResponse(&petv1.DeletePetResponse{}), nil
@@ -77,7 +77,7 @@ func (s *PetStoreService) PurchasePet(
 	defer s.Unlock()
 	petID, err := ulid.Parse(req.Msg.PetId)
 	if err != nil {
-		return nil, connect.NewError(connect.CodeInvalidArgument, nil)
+		return nil, connect.NewError(connect.CodeInvalidArgument, fmt.Errorf("parsing pet id: %s", err))
 	}
 	if _, ok := s.pets[petID]; !ok {
 		return nil, connect.NewError(connect.CodeNotFound, fmt.Errorf("pet %q not found", petID))
