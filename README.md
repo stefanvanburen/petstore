@@ -4,12 +4,6 @@ This is a Go server that implements the [PetStoreService API](https://buf.build/
 It's hosted on [fly.io](https://fly.io), at [petstore.fly.dev](https://petstore.fly.dev).
 The source code is at [github.com/stefanvanburen/petstore](https://github.com/stefanvanburen/petstore).
 
-It currently supports the following RPCs:
-
-* [`PutPet`](https://buf.build/acme/petapis/docs/main:pet.v1#pet.v1.PetStoreService.PutPet)
-* [`GetPet`](https://buf.build/acme/petapis/docs/main:pet.v1#pet.v1.PetStoreService.GetPet)
-* [`DeletePet`](https://buf.build/acme/petapis/docs/main:pet.v1#pet.v1.PetStoreService.DeletePet)
-
 ## Usage
 
 You can interact with the API with plain HTTP requests (via the [Connect protocol](https://connectrpc.com/docs/protocol/)) with any HTTP client, such as cURL, but
