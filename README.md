@@ -39,7 +39,7 @@ You can also use [Buf Studio](https://buf.build/studio/acme/petapis/pet.v1.PetSt
 
 ## Implementation details
 
-The server uses the [connect-go library](https://github.com/connectrpc/connect-go) to implement the API, with [grpcreflect-go](https://github.com/connectrpc/grpcreflect-go) adding support for the gRPC server reflection API.
+The server uses the [connect-go library](https://github.com/connectrpc/connect-go) to implement the API, with [connectrpc/grpcreflect-go](https://github.com/connectrpc/grpcreflect-go) adding support for the gRPC server reflection API.
 
 The packages used for interacting with the API are [remotely generated](https://buf.build/docs/bsr/remote-packages/go/) - there's no code generation in this repository.
 
