@@ -35,6 +35,6 @@ You can also use [Buf Studio](https://buf.build/studio/acme/petapis/pet.v1.PetSt
 
 The server uses the [connect-go library](https://github.com/connectrpc/connect-go) to implement the API, with [connectrpc/grpcreflect-go](https://github.com/connectrpc/grpcreflect-go) adding support for the gRPC server reflection API.
 
-The packages used for interacting with the API are [remotely generated](https://buf.build/docs/bsr/remote-packages/go/) - there's no code generation in this repository.
+The packages used for interacting with the API are [remotely generated](https://buf.build/docs/bsr/generated-sdks/go) - there's no code generation in this repository.
 
 The "database" is completely in memory, so each deploy will wipe out any existing data.
