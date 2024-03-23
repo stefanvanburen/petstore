@@ -12,7 +12,7 @@ import (
 	"buf.build/gen/go/acme/petapis/connectrpc/go/pet/v1/petv1connect"
 	"connectrpc.com/grpcreflect"
 	"github.com/jba/templatecheck"
-	"github.com/jub0bs/fcors"
+	"github.com/jub0bs/cors"
 	"github.com/stefanvanburen/petstore/internal/petstoreservice"
 	"golang.org/x/net/http2"
 	"golang.org/x/net/http2/h2c"
@@ -69,18 +69,21 @@ func run() error {
 	})
 
 	// Allow access from Buf Studio.
-	cors, err := fcors.AllowAccess(
-		fcors.FromOrigins("https://buf.build"),
-		fcors.WithMethods(http.MethodPost),
-		fcors.WithRequestHeaders(
+	corsMiddleware, err := cors.NewMiddleware(cors.Config{
+		Origins: []string{"https://buf.build"},
+		Methods: []string{
+			http.MethodGet,
+			http.MethodPost,
+		},
+		RequestHeaders: []string{
 			"connect-protocol-version",
 			"content-type",
-		),
-	)
+		},
+	})
 	if err != nil {
 		return fmt.Errorf("setting up CORS: %s", err)
 	}
-	handler := cors(mux)
+	handler := corsMiddleware.Wrap(mux)
 
 	slog.InfoContext(context.Background(), "starting PetStore server", "port", port)
 
