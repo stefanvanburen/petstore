@@ -7,7 +7,7 @@ toolchain go1.22.1
 require (
 	buf.build/gen/go/acme/petapis/connectrpc/go v1.11.1-20220907172654-7abdb7802c8f.1
 	buf.build/gen/go/acme/petapis/protocolbuffers/go v1.31.0-20220907172654-7abdb7802c8f.1
-	connectrpc.com/connect v1.11.1
+	connectrpc.com/connect v1.16.0
 	connectrpc.com/grpcreflect v1.2.0
 	github.com/jba/templatecheck v0.7.0
 	github.com/jub0bs/cors v0.1.0
