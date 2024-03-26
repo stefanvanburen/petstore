@@ -6,6 +6,8 @@ buf.build/gen/go/acme/petapis/protocolbuffers/go v1.33.0-20220907172654-7abdb780
 buf.build/gen/go/acme/petapis/protocolbuffers/go v1.33.0-20220907172654-7abdb7802c8f.1/go.mod h1:1pdT5v6jTo0sYWZwt40bp60U8tTPGTA3VkD7Ge2DOdo=
 connectrpc.com/connect v1.16.0 h1:rdtfQjZ0OyFkWPTegBNcH7cwquGAN1WzyJy80oFNibg=
 connectrpc.com/connect v1.16.0/go.mod h1:XpZAduBQUySsb4/KO5JffORVkDI4B6/EYPi7N8xpNZw=
+connectrpc.com/cors v0.1.0 h1:f3gTXJyDZPrDIZCQ567jxfD9PAIpopHiRDnJRt3QuOQ=
+connectrpc.com/cors v0.1.0/go.mod h1:v8SJZCPfHtGH1zsm+Ttajpozd4cYIUryl4dFB6QEpfg=
 connectrpc.com/grpcreflect v1.2.0 h1:Q6og1S7HinmtbEuBvARLNwYmTbhEGRpHDhqrPNlmK+U=
 connectrpc.com/grpcreflect v1.2.0/go.mod h1:nwSOKmE8nU5u/CidgHtPYk1PFI3U9ignz7iDMxOYkSY=
 github.com/golang/protobuf v1.5.0/go.mod h1:FsONVRAS9T7sI+LIUmWTfcYkHO4aIWwzhcaSAoJOfIk=

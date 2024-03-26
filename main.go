@@ -10,6 +10,7 @@ import (
 	"os"
 
 	"buf.build/gen/go/acme/petapis/connectrpc/go/pet/v1/petv1connect"
+	connectcors "connectrpc.com/cors"
 	"connectrpc.com/grpcreflect"
 	"github.com/jba/templatecheck"
 	"github.com/jub0bs/cors"
@@ -70,15 +71,10 @@ func run() error {
 
 	// Allow access from Buf Studio.
 	corsMiddleware, err := cors.NewMiddleware(cors.Config{
-		Origins: []string{"https://buf.build"},
-		Methods: []string{
-			http.MethodGet,
-			http.MethodPost,
-		},
-		RequestHeaders: []string{
-			"connect-protocol-version",
-			"content-type",
-		},
+		Origins:         []string{"https://buf.build"},
+		Methods:         connectcors.AllowedMethods(),
+		RequestHeaders:  connectcors.AllowedHeaders(),
+		ResponseHeaders: connectcors.ExposedHeaders(),
 	})
 	if err != nil {
 		return fmt.Errorf("setting up CORS: %s", err)
