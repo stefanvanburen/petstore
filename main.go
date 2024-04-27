@@ -5,6 +5,7 @@ import (
 	_ "embed"
 	"fmt"
 	"html/template"
+	"io"
 	"log/slog"
 	"net/http"
 	"os"
@@ -30,13 +31,13 @@ var (
 )
 
 func main() {
-	if err := run(); err != nil {
+	if err := run(os.Stderr); err != nil {
 		slog.Error("run", "error", err)
 		os.Exit(1)
 	}
 }
 
-func run() error {
+func run(stderr io.Writer) error {
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = defaultPort
@@ -78,15 +79,17 @@ func run() error {
 		mux.Handle(reflectorv1alphaPath, corsMiddleware.Wrap(reflectorv1alphaHandler))
 	}
 
+	logger := slog.New(slog.NewTextHandler(stderr, nil))
+
 	mux.HandleFunc("GET /{$}", func(responseWriter http.ResponseWriter, request *http.Request) {
 		if err := checkedTemplate.Execute(responseWriter, readmeHTML); err != nil {
-			slog.ErrorContext(request.Context(), "checkedTemplate.Execute", "error", err)
+			logger.ErrorContext(request.Context(), "checkedTemplate.Execute", "error", err)
 			http.Error(responseWriter, err.Error(), http.StatusInternalServerError)
 			return
 		}
 	})
 
-	slog.InfoContext(context.Background(), "starting PetStore server", "port", port)
+	logger.InfoContext(context.Background(), "starting PetStore server", "port", port)
 
 	return http.ListenAndServe(":"+port, h2c.NewHandler(mux, &http2.Server{}))
 }
