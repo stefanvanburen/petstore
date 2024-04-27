@@ -52,23 +52,6 @@ func run() error {
 	}
 	readmeHTML := template.HTML(markdown.ToHTML(markdown.Parse(readmeMarkdown)))
 
-	mux := http.NewServeMux()
-
-	petStoreServicePath, petStoreServiceHandler := petv1connect.NewPetStoreServiceHandler(petstoreservice.New())
-	mux.Handle(petStoreServicePath, petStoreServiceHandler)
-
-	reflector := grpcreflect.NewStaticReflector(petv1connect.PetStoreServiceName)
-	mux.Handle(grpcreflect.NewHandlerV1(reflector))
-	mux.Handle(grpcreflect.NewHandlerV1Alpha(reflector))
-
-	mux.HandleFunc("/", func(responseWriter http.ResponseWriter, request *http.Request) {
-		if err := checkedTemplate.Execute(responseWriter, readmeHTML); err != nil {
-			slog.ErrorContext(request.Context(), "checkedTemplate.Execute", "error", err)
-			http.Error(responseWriter, err.Error(), http.StatusInternalServerError)
-			return
-		}
-	})
-
 	// Allow access from Buf Studio.
 	corsMiddleware, err := cors.NewMiddleware(cors.Config{
 		Origins:         []string{"https://buf.build"},
@@ -79,12 +62,31 @@ func run() error {
 	if err != nil {
 		return fmt.Errorf("setting up CORS: %s", err)
 	}
-	handler := corsMiddleware.Wrap(mux)
+
+	mux := http.NewServeMux()
+	{
+		petStoreServicePath, petStoreServiceHandler := petv1connect.NewPetStoreServiceHandler(petstoreservice.New())
+		mux.Handle(petStoreServicePath, corsMiddleware.Wrap(petStoreServiceHandler))
+	}
+	reflector := grpcreflect.NewStaticReflector(petv1connect.PetStoreServiceName)
+	{
+		reflectorv1Path, reflectorv1Handler := grpcreflect.NewHandlerV1(reflector)
+		mux.Handle(reflectorv1Path, corsMiddleware.Wrap(reflectorv1Handler))
+	}
+	{
+		reflectorv1alphaPath, reflectorv1alphaHandler := grpcreflect.NewHandlerV1Alpha(reflector)
+		mux.Handle(reflectorv1alphaPath, corsMiddleware.Wrap(reflectorv1alphaHandler))
+	}
+
+	mux.HandleFunc("GET /", func(responseWriter http.ResponseWriter, request *http.Request) {
+		if err := checkedTemplate.Execute(responseWriter, readmeHTML); err != nil {
+			slog.ErrorContext(request.Context(), "checkedTemplate.Execute", "error", err)
+			http.Error(responseWriter, err.Error(), http.StatusInternalServerError)
+			return
+		}
+	})
 
 	slog.InfoContext(context.Background(), "starting PetStore server", "port", port)
 
-	return http.ListenAndServe(
-		":"+port,
-		h2c.NewHandler(handler, &http2.Server{}),
-	)
+	return http.ListenAndServe(":"+port, h2c.NewHandler(mux, &http2.Server{}))
 }
