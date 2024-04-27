@@ -38,7 +38,7 @@ func (s *PetStoreService) GetPet(
 	if !ok {
 		return nil, connect.NewError(connect.CodeNotFound, fmt.Errorf("pet %q not found", petID))
 	}
-	return connect.NewResponse(&petv1.GetPetResponse{Pet: pet.ToProto()}), nil
+	return connect.NewResponse(&petv1.GetPetResponse{Pet: pet.toProto()}), nil
 }
 
 func (s *PetStoreService) PutPet(
@@ -49,7 +49,7 @@ func (s *PetStoreService) PutPet(
 	defer s.Unlock()
 	pet := newPet(req.Msg.PetType, req.Msg.Name, s.clock.Now())
 	s.pets[pet.id] = pet
-	return connect.NewResponse(&petv1.PutPetResponse{Pet: pet.ToProto()}), nil
+	return connect.NewResponse(&petv1.PutPetResponse{Pet: pet.toProto()}), nil
 }
 
 func (s *PetStoreService) DeletePet(

@@ -26,7 +26,7 @@ func newPet(petType petv1.PetType, name string, createdAt time.Time) *pet {
 	}
 }
 
-func (p *pet) ToProto() *petv1.Pet {
+func (p *pet) toProto() *petv1.Pet {
 	return &petv1.Pet{
 		PetId:     p.id.String(),
 		PetType:   p.typ,
