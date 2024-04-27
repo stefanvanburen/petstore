@@ -31,13 +31,13 @@ var (
 )
 
 func main() {
-	if err := run(os.Stderr); err != nil {
+	if err := run(os.Stdout); err != nil {
 		slog.Error("run", "error", err)
 		os.Exit(1)
 	}
 }
 
-func run(stderr io.Writer) error {
+func run(out io.Writer) error {
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = defaultPort
@@ -79,7 +79,7 @@ func run(stderr io.Writer) error {
 		mux.Handle(reflectorv1alphaPath, corsMiddleware.Wrap(reflectorv1alphaHandler))
 	}
 
-	logger := slog.New(slog.NewTextHandler(stderr, nil))
+	logger := slog.New(slog.NewTextHandler(out, nil))
 
 	mux.HandleFunc("GET /{$}", func(responseWriter http.ResponseWriter, request *http.Request) {
 		if err := checkedTemplate.Execute(responseWriter, readmeHTML); err != nil {
