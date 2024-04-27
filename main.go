@@ -78,7 +78,7 @@ func run() error {
 		mux.Handle(reflectorv1alphaPath, corsMiddleware.Wrap(reflectorv1alphaHandler))
 	}
 
-	mux.HandleFunc("GET /", func(responseWriter http.ResponseWriter, request *http.Request) {
+	mux.HandleFunc("GET /{$}", func(responseWriter http.ResponseWriter, request *http.Request) {
 		if err := checkedTemplate.Execute(responseWriter, readmeHTML); err != nil {
 			slog.ErrorContext(request.Context(), "checkedTemplate.Execute", "error", err)
 			http.Error(responseWriter, err.Error(), http.StatusInternalServerError)
