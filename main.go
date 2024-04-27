@@ -43,7 +43,7 @@ func run(stderr io.Writer) error {
 		port = defaultPort
 	}
 
-	wrapperTemplate, err := template.New("index.html").Parse(htmlTemplate)
+	wrapperTemplate, err := template.New("").Parse(htmlTemplate)
 	if err != nil {
 		return fmt.Errorf("parsing template: %s", err)
 	}
