@@ -23,8 +23,8 @@ test: ## Run all unit tests
 lint: $(BIN)/staticcheck ## Run linters
 	$(BIN)/staticcheck ./...
 
-.PHONY: deploy ## Deploy directly to fly.io
-deploy:
+.PHONY: deploy
+deploy: ## Deploy directly to fly.io
 	fly deploy
 
 $(BIN)/staticcheck: $(BIN) Makefile
