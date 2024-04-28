@@ -7,8 +7,6 @@ MAKEFLAGS += --warn-undefined-variables
 MAKEFLAGS += --no-builtin-rules
 MAKEFLAGS += --no-print-directory
 BIN := .tmp/bin
-export PATH := $(BIN):$(PATH)
-export GOBIN := $(abspath $(BIN))
 
 .PHONY: help
 help: ## Describe useful make targets
@@ -17,20 +15,18 @@ help: ## Describe useful make targets
 .PHONY: all
 all: test lint ## Generate and run all tests and lint (default)
 
-.PHONY: test ## Run all unit tests
-test:
+.PHONY: test
+test: ## Run all unit tests
 	go test -race ./...
 
-.PHONY: lint-go
-lint: $(BIN)/staticcheck
+.PHONY: lint
+lint: $(BIN)/staticcheck ## Run linters
 	$(BIN)/staticcheck ./...
 
 .PHONY: deploy ## Deploy directly to fly.io
 deploy:
 	fly deploy
 
-$(BIN):
-	@mkdir -p $(BIN)
-
 $(BIN)/staticcheck: $(BIN) Makefile
-	go install honnef.co/go/tools/cmd/staticcheck@latest
+	@mkdir -p $(@D)
+	GOBIN="$(abspath $(@D))" go install honnef.co/go/tools/cmd/staticcheck@latest
