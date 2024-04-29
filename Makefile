@@ -27,6 +27,6 @@ lint: $(BIN)/staticcheck ## Run linters
 deploy: ## Deploy directly to fly.io
 	fly deploy
 
-$(BIN)/staticcheck: $(BIN) Makefile
+$(BIN)/staticcheck: Makefile
 	@mkdir -p $(@D)
 	GOBIN="$(abspath $(@D))" go install honnef.co/go/tools/cmd/staticcheck@latest
