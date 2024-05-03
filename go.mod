@@ -11,7 +11,7 @@ require (
 	connectrpc.com/cors v0.1.0
 	connectrpc.com/grpcreflect v1.2.0
 	github.com/jba/templatecheck v0.7.0
-	github.com/jub0bs/cors v0.1.2
+	github.com/jub0bs/cors v0.1.3
 	github.com/oklog/ulid/v2 v2.1.0
 	go.akshayshah.org/attest v1.0.2
 	golang.org/x/net v0.24.0
