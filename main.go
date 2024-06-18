@@ -1,6 +1,7 @@
 package main
 
 import (
+	"cmp"
 	"context"
 	_ "embed"
 	"fmt"
@@ -38,10 +39,7 @@ func main() {
 }
 
 func run(out io.Writer) error {
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = defaultPort
-	}
+	port := cmp.Or(os.Getenv("PORT"), defaultPort)
 
 	wrapperTemplate, err := template.New("").Parse(htmlTemplate)
 	if err != nil {
