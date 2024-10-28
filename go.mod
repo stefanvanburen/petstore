@@ -10,7 +10,7 @@ require (
 	connectrpc.com/connect v1.17.0
 	connectrpc.com/cors v0.1.0
 	connectrpc.com/grpcreflect v1.2.0
-	github.com/jba/templatecheck v0.7.0
+	github.com/jba/templatecheck v0.7.1
 	github.com/jub0bs/cors v0.3.1
 	github.com/oklog/ulid/v2 v2.1.0
 	go.akshayshah.org/attest v1.1.0
