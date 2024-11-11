@@ -1,21 +1,31 @@
-app = "petstore"
-primary_region = "bos"
-kill_signal = "SIGINT"
-kill_timeout = "5s"
+# fly.toml app configuration file generated for petstore-blue-cloud-8985 on 2024-11-11T08:50:50-05:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
 
-[experimental]
-auto_rollback = true
+app = 'petstore'
+primary_region = 'bos'
 
 [build]
-builder = "paketobuildpacks/builder:base"
-buildpacks = ["gcr.io/paketo-buildpacks/go"]
+  [build.args]
+    GO_VERSION = '1.23.3'
 
-[[services]]
-protocol = "tcp"
-internal_port = 54321
-processes = ["app"]
+[http_service]
+  internal_port = 54321
+  force_https = true
+  auto_stop_machines = 'stop'
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
+  [http_service.http_options]
+    h2_backend = true
+  [http_service.tls_options]
+    alpn = ["h2", "http/1.1"]
+    versions = ["TLSv1.2", "TLSv1.3"]
+    default_self_signed = false
 
-[[services.ports]]
-handlers = ["tls"]
-port = 443
-tls_options = { "alpn" = ["h2"] }
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1
