@@ -1,7 +1,7 @@
 # PetStore 🐶🐱🏪
 
 This is a Go server that implements the [PetStoreService API](https://buf.build/acme/petapis/docs/main:pet.v1#pet.v1.PetStoreService).
-It's hosted on [fly.io](https://fly.io), at [petstore.fly.dev](https://petstore.fly.dev).
+It's hosted on [fly.io](https://fly.io), at [ps.vanburen.xyz](https://ps.vanburen.xyz).
 The source code is at [github.com/stefanvanburen/petstore](https://github.com/stefanvanburen/petstore).
 
 ## Usage
@@ -13,23 +13,23 @@ You can interact with the API with plain HTTP requests (via the [Connect protoco
 $ # Create a pet
 $ buf curl \
   --data '{"name": "Mobin", "petType": "PET_TYPE_CAT"}' \
-  https://petstore.fly.dev/pet.v1.PetStoreService/PutPet | jq .pet.petId
+  https://ps.vanburen.xyz/pet.v1.PetStoreService/PutPet | jq .pet.petId
 "01GT4XTKXEXY74QD8H575E8NWC"
 
 $ # Retrieve a pet
 $ buf curl \
   --data '{"petId":"01GT4XTKXEXY74QD8H575E8NWC"}' \
-  https://petstore.fly.dev/pet.v1.PetStoreService/GetPet | jq .pet.name
+  https://ps.vanburen.xyz/pet.v1.PetStoreService/GetPet | jq .pet.name
 "Mobin"
 
 $ # Delete a pet. :(
 $ buf curl \
   --data '{"petId":"01GT4XTKXEXY74QD8H575E8NWC"}' \
-  https://petstore.fly.dev/pet.v1.PetStoreService/DeletePet
+  https://ps.vanburen.xyz/pet.v1.PetStoreService/DeletePet
 {}
 ```
 
-You can also use [Buf Studio](https://buf.build/studio/acme/petapis/pet.v1.PetStoreService/PutPet?target=https%3A%2F%2Fpetstore.fly.dev) to interact with the API in a much more interactive way.
+You can also use [Buf Studio](https://buf.build/studio/acme/petapis/pet.v1.PetStoreService/PutPet?target=https%3A%2F%2Fps.vanburen.xyz) to interact with the API in a much more interactive way.
 
 ## Implementation details
 
