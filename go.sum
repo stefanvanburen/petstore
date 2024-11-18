@@ -1,9 +1,9 @@
-buf.build/gen/go/acme/paymentapis/protocolbuffers/go v1.35.1-20220907172603-9a877cf260e1.1 h1:2jt5u7G5NXRUhwKcIYE90kH54QW9XVSE0u+OtITYbKE=
-buf.build/gen/go/acme/paymentapis/protocolbuffers/go v1.35.1-20220907172603-9a877cf260e1.1/go.mod h1:05+Njd3PYzO2+4CoFvB0i4I3I4SVIl9dD5mUk6y2S5A=
+buf.build/gen/go/acme/paymentapis/protocolbuffers/go v1.35.2-20220907172603-9a877cf260e1.1 h1:27TKoZ8ZOXDxjWoND0ExcC2ekwAs6gTYvsd21s73ndk=
+buf.build/gen/go/acme/paymentapis/protocolbuffers/go v1.35.2-20220907172603-9a877cf260e1.1/go.mod h1:aAjyNDe45rnkzuKA/gHD55irUFqogtY6bSCggZ+6yPk=
 buf.build/gen/go/acme/petapis/connectrpc/go v1.17.0-20220907172654-7abdb7802c8f.1 h1:TSrIYcJ9/GOCPHN+ZJ72r2x0o2EAq8c2jOOXUu4XA44=
 buf.build/gen/go/acme/petapis/connectrpc/go v1.17.0-20220907172654-7abdb7802c8f.1/go.mod h1:GURw53x1gYKedyeuIvDu18p4Z9WC8YAq9Rwvb0sFWTM=
-buf.build/gen/go/acme/petapis/protocolbuffers/go v1.35.1-20220907172654-7abdb7802c8f.1 h1:oCYgU2MFEmSU2deR/6081sTsN5H23YzfjXzwhoqhNgk=
-buf.build/gen/go/acme/petapis/protocolbuffers/go v1.35.1-20220907172654-7abdb7802c8f.1/go.mod h1:xaKRg+iBtcqSGJJmJ8+dEUNKL8J1n2QsZmOz1B+hVuE=
+buf.build/gen/go/acme/petapis/protocolbuffers/go v1.35.2-20220907172654-7abdb7802c8f.1 h1:psIFOFceSu+HGeef4UeRPnIUi6ay/CKzxfa+2QUr+xo=
+buf.build/gen/go/acme/petapis/protocolbuffers/go v1.35.2-20220907172654-7abdb7802c8f.1/go.mod h1:MoOSFQvQzmwgFWT8cE0obIRD+AHq6xjmD09Z824QK+I=
 connectrpc.com/connect v1.17.0 h1:W0ZqMhtVzn9Zhn2yATuUokDLO5N+gIuBWMOnsQrfmZk=
 connectrpc.com/connect v1.17.0/go.mod h1:0292hj1rnx8oFrStN7cB4jjVBeqs+Yx5yDIC2prWDO8=
 connectrpc.com/cors v0.1.0 h1:f3gTXJyDZPrDIZCQ567jxfD9PAIpopHiRDnJRt3QuOQ=
@@ -35,7 +35,7 @@ golang.org/x/tools v0.21.1-0.20240508182429-e35e4ccd0d2d h1:vU5i/LfpvrRCpgM/VPfJ
 golang.org/x/tools v0.21.1-0.20240508182429-e35e4ccd0d2d/go.mod h1:aiJjzUbINMkxbQROHiO6hDPo2LHcIPhhQsa9DLh0yGk=
 google.golang.org/genproto v0.0.0-20221118155620-16455021b5e6 h1:a2S6M0+660BgMNl++4JPlcAO/CjkqYItDEZwkoDQK7c=
 google.golang.org/genproto v0.0.0-20221118155620-16455021b5e6/go.mod h1:rZS5c/ZVYMaOGBfO68GWtjOw/eLaZM1X6iVtgjZ+EWg=
-google.golang.org/protobuf v1.35.1 h1:m3LfL6/Ca+fqnjnlqQXNpFPABW1UD7mjh8KO2mKFytA=
-google.golang.org/protobuf v1.35.1/go.mod h1:9fA7Ob0pmnwhb644+1+CVWFRbNajQ6iRojtC/QF5bRE=
+google.golang.org/protobuf v1.35.2 h1:8Ar7bF+apOIoThw1EdZl0p1oWvMqTHmpA2fRTyZO8io=
+google.golang.org/protobuf v1.35.2/go.mod h1:9fA7Ob0pmnwhb644+1+CVWFRbNajQ6iRojtC/QF5bRE=
 rsc.io/markdown v0.0.0-20231030184305-7ce63bd70e80 h1:6BTZeXslcVMu8OGrj8ITkF4dB/Bcoqk14TXfu9q5IwE=
 rsc.io/markdown v0.0.0-20231030184305-7ce63bd70e80/go.mod h1:nk+xE/OpgE9owRnSJhFn6dLP9iHa3YD28flp7Y5FDjw=
