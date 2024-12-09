@@ -12,7 +12,7 @@ require (
 	github.com/jub0bs/cors v0.3.1
 	github.com/oklog/ulid/v2 v2.1.0
 	go.akshayshah.org/attest v1.1.0
-	golang.org/x/net v0.31.0
+	golang.org/x/net v0.32.0
 	google.golang.org/genproto v0.0.0-20221118155620-16455021b5e6
 	google.golang.org/protobuf v1.35.2
 	rsc.io/markdown v0.0.0-20231030184305-7ce63bd70e80
@@ -22,5 +22,5 @@ require (
 	buf.build/gen/go/acme/paymentapis/protocolbuffers/go v1.35.2-20220907172603-9a877cf260e1.1 // indirect
 	github.com/google/go-cmp v0.5.9 // indirect
 	github.com/google/safehtml v0.0.2 // indirect
-	golang.org/x/text v0.20.0 // indirect
+	golang.org/x/text v0.21.0 // indirect
 )
