@@ -49,7 +49,7 @@ func run(out io.Writer) error {
 	if err != nil {
 		return fmt.Errorf("creating checked template: %s", err)
 	}
-	readmeHTML := template.HTML(markdown.ToHTML(markdown.Parse(readmeMarkdown)))
+	readmeHTML := template.HTML(markdown.ToHTML((&markdown.Parser{}).Parse(readmeMarkdown)))
 
 	// Allow access from Buf Studio.
 	corsMiddleware, err := cors.NewMiddleware(cors.Config{
