@@ -21,8 +21,8 @@ github.com/jub0bs/cors v0.3.1/go.mod h1:mU8XwHPNxGuuvDpf3sKF+F0Yi5bZMzd8k0h7a8I9
 github.com/oklog/ulid/v2 v2.1.0 h1:+9lhoxAP56we25tyYETBBY1YLA2SaoLvUFgrP2miPJU=
 github.com/oklog/ulid/v2 v2.1.0/go.mod h1:rcEKHmBBKfef9DhnvX7y1HZBYxjXb0cP5ExxNsTT1QQ=
 github.com/pborman/getopt v0.0.0-20170112200414-7148bc3a4c30/go.mod h1:85jBQOZwpVEaDAr341tbn15RS4fCAsIst0qp7i8ex1o=
-github.com/yuin/goldmark v1.4.1 h1:/vn0k+RBvwlxEmP5E7SZMqNxPhfMVFEJiykr15/0XKM=
-github.com/yuin/goldmark v1.4.1/go.mod h1:mwnBkeHKe2W/ZEtQ+71ViKU8L12m81fl3OWwC1Zlc8k=
+github.com/yuin/goldmark v1.6.0 h1:boZcn2GTjpsynOsC0iJHnBWa4Bi0qzfJjthwauItG68=
+github.com/yuin/goldmark v1.6.0/go.mod h1:6yULJ656Px+3vBD8DxQVa3kxgyrAnzto9xy5taEt/CY=
 go.akshayshah.org/attest v1.1.0 h1:RvjkN+6stEX9u7T78v/t/xFyUO2wr6oO6atnhpo4vIk=
 go.akshayshah.org/attest v1.1.0/go.mod h1:tG+NZRJszHowj/41vXsiiMCxgF+vGTq6jznqVaCiBvQ=
 golang.org/x/net v0.33.0 h1:74SYHlV8BIgHIFC/LrYkOGIwL19eTYXQ5wc6TBuO36I=
@@ -37,5 +37,5 @@ google.golang.org/genproto v0.0.0-20221118155620-16455021b5e6 h1:a2S6M0+660BgMNl
 google.golang.org/genproto v0.0.0-20221118155620-16455021b5e6/go.mod h1:rZS5c/ZVYMaOGBfO68GWtjOw/eLaZM1X6iVtgjZ+EWg=
 google.golang.org/protobuf v1.35.2 h1:8Ar7bF+apOIoThw1EdZl0p1oWvMqTHmpA2fRTyZO8io=
 google.golang.org/protobuf v1.35.2/go.mod h1:9fA7Ob0pmnwhb644+1+CVWFRbNajQ6iRojtC/QF5bRE=
-rsc.io/markdown v0.0.0-20231030184305-7ce63bd70e80 h1:6BTZeXslcVMu8OGrj8ITkF4dB/Bcoqk14TXfu9q5IwE=
-rsc.io/markdown v0.0.0-20231030184305-7ce63bd70e80/go.mod h1:nk+xE/OpgE9owRnSJhFn6dLP9iHa3YD28flp7Y5FDjw=
+rsc.io/markdown v0.0.0-20241212154241-6bf72452917f h1:zQHn9vNRGvg+k5NdSMZ5jdSQcuz7k5niNMO0f0XkwKc=
+rsc.io/markdown v0.0.0-20241212154241-6bf72452917f/go.mod h1:dTYI7HoCsVAs6SKPMgkC2TV2xRFJB9WqcVydnnZby2Y=
