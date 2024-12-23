@@ -1,9 +1,9 @@
-buf.build/gen/go/acme/paymentapis/protocolbuffers/go v1.35.2-20220907172603-9a877cf260e1.1 h1:27TKoZ8ZOXDxjWoND0ExcC2ekwAs6gTYvsd21s73ndk=
-buf.build/gen/go/acme/paymentapis/protocolbuffers/go v1.35.2-20220907172603-9a877cf260e1.1/go.mod h1:aAjyNDe45rnkzuKA/gHD55irUFqogtY6bSCggZ+6yPk=
+buf.build/gen/go/acme/paymentapis/protocolbuffers/go v1.36.0-20220907172603-9a877cf260e1.1 h1:o4kio0hzhc1xiL/NhN0R0rMwnOl6XYw18LfDbIn2eyE=
+buf.build/gen/go/acme/paymentapis/protocolbuffers/go v1.36.0-20220907172603-9a877cf260e1.1/go.mod h1:WGflfcBoA15pdweR96rztdGWUYELYtYAQY/NWNmFa9s=
 buf.build/gen/go/acme/petapis/connectrpc/go v1.17.0-20220907172654-7abdb7802c8f.1 h1:TSrIYcJ9/GOCPHN+ZJ72r2x0o2EAq8c2jOOXUu4XA44=
 buf.build/gen/go/acme/petapis/connectrpc/go v1.17.0-20220907172654-7abdb7802c8f.1/go.mod h1:GURw53x1gYKedyeuIvDu18p4Z9WC8YAq9Rwvb0sFWTM=
-buf.build/gen/go/acme/petapis/protocolbuffers/go v1.35.2-20220907172654-7abdb7802c8f.1 h1:psIFOFceSu+HGeef4UeRPnIUi6ay/CKzxfa+2QUr+xo=
-buf.build/gen/go/acme/petapis/protocolbuffers/go v1.35.2-20220907172654-7abdb7802c8f.1/go.mod h1:MoOSFQvQzmwgFWT8cE0obIRD+AHq6xjmD09Z824QK+I=
+buf.build/gen/go/acme/petapis/protocolbuffers/go v1.36.0-20220907172654-7abdb7802c8f.1 h1:9noEDpxwquv+xqMXxf5TjEkgjAA0LP5Os/PYFPw9D4E=
+buf.build/gen/go/acme/petapis/protocolbuffers/go v1.36.0-20220907172654-7abdb7802c8f.1/go.mod h1:5KTCln6PPJfSppDddQKPU6Irbo3W7+hmyGC/UBR6+3A=
 connectrpc.com/connect v1.17.0 h1:W0ZqMhtVzn9Zhn2yATuUokDLO5N+gIuBWMOnsQrfmZk=
 connectrpc.com/connect v1.17.0/go.mod h1:0292hj1rnx8oFrStN7cB4jjVBeqs+Yx5yDIC2prWDO8=
 connectrpc.com/cors v0.1.0 h1:f3gTXJyDZPrDIZCQ567jxfD9PAIpopHiRDnJRt3QuOQ=
