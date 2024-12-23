@@ -4,7 +4,7 @@ go 1.23.4
 
 require (
 	buf.build/gen/go/acme/petapis/connectrpc/go v1.17.0-20220907172654-7abdb7802c8f.1
-	buf.build/gen/go/acme/petapis/protocolbuffers/go v1.35.2-20220907172654-7abdb7802c8f.1
+	buf.build/gen/go/acme/petapis/protocolbuffers/go v1.36.0-20220907172654-7abdb7802c8f.1
 	connectrpc.com/connect v1.17.0
 	connectrpc.com/cors v0.1.0
 	connectrpc.com/grpcreflect v1.2.0
@@ -19,7 +19,7 @@ require (
 )
 
 require (
-	buf.build/gen/go/acme/paymentapis/protocolbuffers/go v1.35.2-20220907172603-9a877cf260e1.1 // indirect
+	buf.build/gen/go/acme/paymentapis/protocolbuffers/go v1.36.0-20220907172603-9a877cf260e1.1 // indirect
 	github.com/google/go-cmp v0.5.9 // indirect
 	github.com/google/safehtml v0.0.2 // indirect
 	golang.org/x/text v0.21.0 // indirect
