@@ -12,7 +12,7 @@ require (
 	github.com/jub0bs/cors v0.5.0
 	github.com/oklog/ulid/v2 v2.1.0
 	go.akshayshah.org/attest v1.1.0
-	golang.org/x/net v0.33.0
+	golang.org/x/net v0.34.0
 	google.golang.org/genproto v0.0.0-20241216192217-9240e9c98484
 	google.golang.org/protobuf v1.36.2
 	rsc.io/markdown v0.0.0-20241212154241-6bf72452917f
