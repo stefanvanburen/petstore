@@ -14,7 +14,7 @@ require (
 	go.akshayshah.org/attest v1.1.0
 	golang.org/x/net v0.34.0
 	google.golang.org/genproto v0.0.0-20241216192217-9240e9c98484
-	google.golang.org/protobuf v1.36.2
+	google.golang.org/protobuf v1.36.3
 	rsc.io/markdown v0.0.0-20241212154241-6bf72452917f
 )
 
