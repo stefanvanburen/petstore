@@ -20,13 +20,9 @@ test: ## Run all unit tests
 	go test -race ./...
 
 .PHONY: lint
-lint: $(BIN)/staticcheck ## Run linters
-	$(BIN)/staticcheck ./...
+lint:  ## Run linters
+	go tool honnef.co/go/tools/cmd/staticcheck ./...
 
 .PHONY: deploy
 deploy: ## Deploy directly to fly.io
 	fly deploy
-
-$(BIN)/staticcheck: Makefile
-	@mkdir -p $(@D)
-	GOBIN="$(abspath $(@D))" go install honnef.co/go/tools/cmd/staticcheck@latest
