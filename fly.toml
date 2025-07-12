@@ -8,7 +8,7 @@ primary_region = 'bos'
 
 [build]
   [build.args]
-    GO_VERSION = '1.23.4'
+    GO_VERSION = '1.24.5'
 
 [http_service]
   internal_port = 54321
