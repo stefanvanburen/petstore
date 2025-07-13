@@ -27,7 +27,7 @@ const defaultPort = "54321"
 var (
 	//go:embed README.md
 	readmeMarkdown string
-	//go:embed wrapper.html.tmpl
+	//go:embed wrapper.html.gotmpl
 	htmlTemplate string
 )
 
