@@ -1,15 +1,16 @@
-name: ci
+name: CI
 on:
   push:
     branches:
       - main
   pull_request:
 jobs:
-  test:
+  ci:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-go@v5
       with:
         go-version-file: 'go.mod'
-    - run: make
+    - uses: extractions/setup-just@v3
+    - run: just
