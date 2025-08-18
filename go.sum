@@ -18,8 +18,8 @@ github.com/google/safehtml v0.0.2 h1:ZOt2VXg4x24bW0m2jtzAOkhoXV0iM8vNKc0paByCZqM
 github.com/google/safehtml v0.0.2/go.mod h1:L4KWwDsUJdECRAEpZoBn3O64bQaywRscowZjJAzjHnU=
 github.com/jba/templatecheck v0.7.1 h1:yOEIFazBEwzdTPYHZF3Pm81NF1ksxx1+vJncSEwvjKc=
 github.com/jba/templatecheck v0.7.1/go.mod h1:n1Etw+Rrw1mDDD8dDRsEKTwMZsJ98EkktgNJC6wLUGo=
-github.com/jub0bs/cors v0.7.0 h1:X/f4vHkpCd5XcpXBzmEGkVI6QWEnlOMm4nnDAETnDvo=
-github.com/jub0bs/cors v0.7.0/go.mod h1:flNw2AnRMQ4WUhcG3DUNfOPB1FVc+jlSGsyjzWV9ZC0=
+github.com/jub0bs/cors v0.8.0 h1:mkxA2yqfDCC9dzd9nVEFIZBmoKqNRNTzmtocyCM+Koo=
+github.com/jub0bs/cors v0.8.0/go.mod h1:idWiWQcUhqa4Bc1JSwS4z6+TcGmdrN6mQyWF+4aX+60=
 github.com/oklog/ulid/v2 v2.1.1 h1:suPZ4ARWLOJLegGFiZZ1dFAkqzhMjL3J1TzI+5wHz8s=
 github.com/oklog/ulid/v2 v2.1.1/go.mod h1:rcEKHmBBKfef9DhnvX7y1HZBYxjXb0cP5ExxNsTT1QQ=
 github.com/pborman/getopt v0.0.0-20170112200414-7148bc3a4c30/go.mod h1:85jBQOZwpVEaDAr341tbn15RS4fCAsIst0qp7i8ex1o=
