@@ -9,7 +9,7 @@ require (
 	connectrpc.com/cors v0.1.0
 	connectrpc.com/grpcreflect v1.3.0
 	github.com/jba/templatecheck v0.7.1
-	github.com/jub0bs/cors v0.8.0
+	github.com/jub0bs/cors v0.9.0
 	github.com/oklog/ulid/v2 v2.1.1
 	go.akshayshah.org/attest v1.1.0
 	golang.org/x/net v0.43.0
