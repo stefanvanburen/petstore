@@ -1,6 +1,6 @@
 module github.com/stefanvanburen/petstore
 
-go 1.24.5
+go 1.25.1
 
 require (
 	buf.build/gen/go/acme/petapis/connectrpc/go v1.18.1-20220907172654-7abdb7802c8f.1
