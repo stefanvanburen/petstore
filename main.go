@@ -17,8 +17,6 @@ import (
 	"github.com/jba/templatecheck"
 	"github.com/jub0bs/cors"
 	"github.com/stefanvanburen/petstore/internal/petstoreservice"
-	"golang.org/x/net/http2"
-	"golang.org/x/net/http2/h2c"
 	"rsc.io/markdown"
 )
 
@@ -89,5 +87,14 @@ func run(out io.Writer) error {
 
 	logger.InfoContext(context.Background(), "starting PetStore server", "port", port)
 
-	return http.ListenAndServe(":"+port, h2c.NewHandler(mux, &http2.Server{}))
+	protocols := &http.Protocols{}
+	protocols.SetHTTP1(true)
+	// For gRPC clients, it's convenient to support HTTP/2 without TLS.
+	protocols.SetUnencryptedHTTP2(true)
+	s := &http.Server{
+		Addr:      ":" + port,
+		Handler:   mux,
+		Protocols: protocols,
+	}
+	return s.ListenAndServe()
 }

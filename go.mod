@@ -12,7 +12,6 @@ require (
 	github.com/jub0bs/cors v0.9.0
 	github.com/oklog/ulid/v2 v2.1.1
 	go.akshayshah.org/attest v1.1.0
-	golang.org/x/net v0.43.0
 	google.golang.org/genproto v0.0.0-20241216192217-9240e9c98484
 	google.golang.org/protobuf v1.36.9
 	rsc.io/markdown v0.0.0-20241212154241-6bf72452917f
@@ -25,6 +24,7 @@ require (
 	github.com/google/safehtml v0.0.2 // indirect
 	golang.org/x/exp/typeparams v0.0.0-20231108232855-2478ac86f678 // indirect
 	golang.org/x/mod v0.26.0 // indirect
+	golang.org/x/net v0.43.0 // indirect
 	golang.org/x/sync v0.16.0 // indirect
 	golang.org/x/text v0.28.0 // indirect
 	golang.org/x/tools v0.35.0 // indirect
