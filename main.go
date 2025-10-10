@@ -30,13 +30,13 @@ var (
 )
 
 func main() {
-	if err := run(os.Stdout); err != nil {
+	if err := run(context.Background(), os.Stdout); err != nil {
 		slog.Error("run", "error", err)
 		os.Exit(1)
 	}
 }
 
-func run(out io.Writer) error {
+func run(ctx context.Context, out io.Writer) error {
 	port := cmp.Or(os.Getenv("PORT"), defaultPort)
 
 	wrapperTemplate, err := template.New("").Parse(htmlTemplate)
@@ -85,7 +85,7 @@ func run(out io.Writer) error {
 		}
 	})
 
-	logger.InfoContext(context.Background(), "starting PetStore server", "port", port)
+	logger.InfoContext(ctx, "starting PetStore server", "port", port)
 
 	protocols := &http.Protocols{}
 	protocols.SetHTTP1(true)
