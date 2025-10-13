@@ -5,7 +5,7 @@ go 1.25.2
 require (
 	buf.build/gen/go/acme/petapis/connectrpc/go v1.19.0-20220907172654-7abdb7802c8f.1
 	buf.build/gen/go/acme/petapis/protocolbuffers/go v1.36.10-20220907172654-7abdb7802c8f.1
-	connectrpc.com/connect v1.19.0
+	connectrpc.com/connect v1.19.1
 	connectrpc.com/cors v0.1.0
 	connectrpc.com/grpcreflect v1.3.0
 	github.com/jba/templatecheck v0.7.1
