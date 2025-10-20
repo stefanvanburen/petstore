@@ -1,7 +1,7 @@
 buf.build/gen/go/acme/paymentapis/protocolbuffers/go v1.36.10-20220907172603-9a877cf260e1.1 h1:WkzvrzS+XkV4D+AnSeXwg6gBazzdI1I01hD7CUcZ5fM=
 buf.build/gen/go/acme/paymentapis/protocolbuffers/go v1.36.10-20220907172603-9a877cf260e1.1/go.mod h1:0zVZSEp82tC2EMBs5vFr0ul6tYIgTwPwTaDKzVy5tbc=
-buf.build/gen/go/acme/petapis/connectrpc/go v1.19.1-20220907172654-7abdb7802c8f.1 h1:inpXHM4WDtQhJ04snZL+UlCFCRjVX7EIjUOdYlubr2E=
-buf.build/gen/go/acme/petapis/connectrpc/go v1.19.1-20220907172654-7abdb7802c8f.1/go.mod h1:YfMjtkbE6+2U/IoyCxnlw2wFoY76tgrrO5JDkYfRlDI=
+buf.build/gen/go/acme/petapis/connectrpc/go v1.19.1-20220907172654-7abdb7802c8f.2 h1:gIsoITUBN0i8KGM2AkS/tbF9hWRNULXtIGiC3fW9xO0=
+buf.build/gen/go/acme/petapis/connectrpc/go v1.19.1-20220907172654-7abdb7802c8f.2/go.mod h1:2+4iz4FjgRNrjmOT2k1nfQJbr8r2B6zrCtJma7ePymQ=
 buf.build/gen/go/acme/petapis/protocolbuffers/go v1.36.10-20220907172654-7abdb7802c8f.1 h1:T4bXTQx+SpUoVTqiN5CQP2MXFBWlnetm+oGBHxKwBmk=
 buf.build/gen/go/acme/petapis/protocolbuffers/go v1.36.10-20220907172654-7abdb7802c8f.1/go.mod h1:hOODBJR1XQMWwCstSsYht+v0KXZTTtC75gyGUEoiRo4=
 connectrpc.com/connect v1.19.1 h1:R5M57z05+90EfEvCY1b7hBxDVOUl45PrtXtAV2fOC14=
