@@ -13,7 +13,7 @@ require (
 	github.com/oklog/ulid/v2 v2.1.1
 	go.akshayshah.org/attest v1.1.0
 	google.golang.org/genproto v0.0.0-20241216192217-9240e9c98484
-	google.golang.org/protobuf v1.36.10
+	google.golang.org/protobuf v1.36.11
 	rsc.io/markdown v0.0.0-20241212154241-6bf72452917f
 )
 
