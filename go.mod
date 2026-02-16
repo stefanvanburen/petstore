@@ -9,7 +9,7 @@ require (
 	connectrpc.com/cors v0.1.0
 	connectrpc.com/grpcreflect v1.3.0
 	github.com/jba/templatecheck v0.7.1
-	github.com/jub0bs/cors v0.11.0
+	github.com/jub0bs/cors v0.12.1
 	github.com/oklog/ulid/v2 v2.1.1
 	go.akshayshah.org/attest v1.1.0
 	google.golang.org/genproto v0.0.0-20241216192217-9240e9c98484
@@ -23,11 +23,11 @@ require (
 	github.com/google/go-cmp v0.7.0 // indirect
 	github.com/google/safehtml v0.0.2 // indirect
 	golang.org/x/exp/typeparams v0.0.0-20231108232855-2478ac86f678 // indirect
-	golang.org/x/mod v0.31.0 // indirect
-	golang.org/x/net v0.49.0 // indirect
+	golang.org/x/mod v0.32.0 // indirect
+	golang.org/x/net v0.50.0 // indirect
 	golang.org/x/sync v0.19.0 // indirect
-	golang.org/x/text v0.33.0 // indirect
-	golang.org/x/tools v0.40.0 // indirect
+	golang.org/x/text v0.34.0 // indirect
+	golang.org/x/tools v0.41.0 // indirect
 	golang.org/x/tools/go/expect v0.1.1-deprecated // indirect
 	honnef.co/go/tools v0.6.1 // indirect
 )
