@@ -3,9 +3,9 @@ module github.com/stefanvanburen/petstore
 go 1.26.0
 
 require (
-	buf.build/gen/go/acme/petapis/connectrpc/go v1.19.2-20220907172654-7abdb7802c8f.1
+	buf.build/gen/go/acme/petapis/connectrpc/go v1.20.0-20220907172654-7abdb7802c8f.1
 	buf.build/gen/go/acme/petapis/protocolbuffers/go v1.36.11-20220907172654-7abdb7802c8f.1
-	connectrpc.com/connect v1.19.2
+	connectrpc.com/connect v1.20.0
 	connectrpc.com/cors v0.1.0
 	connectrpc.com/grpcreflect v1.3.0
 	github.com/jba/templatecheck v0.7.1
