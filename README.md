@@ -10,22 +10,19 @@ You can interact with the API with plain HTTP requests (via the [Connect protoco
 [`buf curl`](https://buf.build/docs/curl/usage/) makes it easy:
 
 ```console
+$ BASE_URL=https://ps.vanburen.xyz/pet.v1.PetStoreService
 $ # Create a pet
-$ buf curl \
-  --data '{"name": "Mobin", "petType": "PET_TYPE_CAT"}' \
-  https://ps.vanburen.xyz/pet.v1.PetStoreService/PutPet | jq .pet.petId
-"01GT4XTKXEXY74QD8H575E8NWC"
+$ PET_ID=$(buf curl --data '{"name": "Mobin", "petType": "PET_TYPE_CAT"}' "$BASE_URL/PutPet" | jq -r .pet.petId)
+$ echo $PET_ID
+01GT4XTKXEXY74QD8H575E8NWC
 
 $ # Retrieve a pet
-$ buf curl \
-  --data '{"petId":"01GT4XTKXEXY74QD8H575E8NWC"}' \
-  https://ps.vanburen.xyz/pet.v1.PetStoreService/GetPet | jq .pet.name
+$ DATA="{\"petId\": \"$PET_ID\"}"
+$ buf curl --data "$DATA" "$BASE_URL/GetPet" | jq .pet.name
 "Mobin"
 
 $ # Delete a pet. :(
-$ buf curl \
-  --data '{"petId":"01GT4XTKXEXY74QD8H575E8NWC"}' \
-  https://ps.vanburen.xyz/pet.v1.PetStoreService/DeletePet
+$ buf curl --data "$DATA" "$BASE_URL/DeletePet"
 {}
 ```
 
