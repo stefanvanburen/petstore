@@ -1,4 +1,4 @@
-module github.com/stefanvanburen/petstore
+module go.vanburen.xyz/petstore
 
 go 1.26.0
 

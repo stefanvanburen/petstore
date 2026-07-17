@@ -16,7 +16,7 @@ import (
 	"connectrpc.com/grpcreflect"
 	"github.com/jba/templatecheck"
 	"github.com/jub0bs/cors"
-	"github.com/stefanvanburen/petstore/internal/petstoreservice"
+	"go.vanburen.xyz/petstore/internal/petstoreservice"
 	"rsc.io/markdown"
 )
 
