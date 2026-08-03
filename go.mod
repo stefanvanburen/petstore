@@ -10,7 +10,7 @@ require (
 	connectrpc.com/grpcreflect v1.3.0
 	github.com/jba/templatecheck v0.7.1
 	github.com/jub0bs/cors v1.0.5
-	github.com/oklog/ulid/v2 v2.1.1
+	github.com/oklog/ulid/v2 v2.1.2
 	go.akshayshah.org/attest v1.1.0
 	google.golang.org/genproto v0.0.0-20241216192217-9240e9c98484
 	google.golang.org/protobuf v1.36.11
