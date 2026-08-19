@@ -1,6 +1,6 @@
 module go.vanburen.xyz/petstore
 
-go 1.26.0
+go 1.27.0
 
 require (
 	buf.build/gen/go/acme/petapis/connectrpc/go v1.20.0-20220907172654-7abdb7802c8f.1
