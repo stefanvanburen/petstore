@@ -11,6 +11,7 @@ test:
 # Run linters (staticcheck).
 lint:
     go tool honnef.co/go/tools/cmd/staticcheck ./...
+    go fix -diff ./...
 
 # Deploy directly to fly.io
 deploy:
