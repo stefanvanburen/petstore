@@ -12,6 +12,7 @@ test:
 lint:
     go tool honnef.co/go/tools/cmd/staticcheck ./...
     go fix -diff ./...
+    test -z "$(gofmt -l .)" || (echo "gofmt needed on:"; gofmt -l .; exit 1)
 
 # Deploy directly to fly.io
 deploy:
