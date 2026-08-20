@@ -11,7 +11,7 @@ require (
 	github.com/jba/templatecheck v0.7.1
 	github.com/jub0bs/cors v1.0.5
 	github.com/oklog/ulid/v2 v2.1.2
-	go.akshayshah.org/attest v1.1.0
+	go.vanburen.xyz/ok v0.4.0
 	google.golang.org/genproto v0.0.0-20241216192217-9240e9c98484
 	google.golang.org/protobuf v1.36.11
 	rsc.io/markdown v0.0.0-20241212154241-6bf72452917f
@@ -22,14 +22,17 @@ require (
 	github.com/BurntSushi/toml v1.4.1-0.20240526193622-a339e1f7089c // indirect
 	github.com/google/go-cmp v0.7.0 // indirect
 	github.com/google/safehtml v0.0.2 // indirect
+	github.com/stefanvanburen/colorcmp v0.3.0 // indirect
 	golang.org/x/exp/typeparams v0.0.0-20231108232855-2478ac86f678 // indirect
 	golang.org/x/mod v0.37.0 // indirect
 	golang.org/x/net v0.57.0 // indirect
 	golang.org/x/sync v0.22.0 // indirect
+	golang.org/x/sys v0.47.0 // indirect
+	golang.org/x/term v0.45.0 // indirect
 	golang.org/x/text v0.40.0 // indirect
 	golang.org/x/tools v0.47.0 // indirect
-	golang.org/x/tools/go/expect v0.1.1-deprecated // indirect
 	honnef.co/go/tools v0.8.0 // indirect
+	znkr.io/diff v1.0.0 // indirect
 )
 
 tool honnef.co/go/tools/cmd/staticcheck

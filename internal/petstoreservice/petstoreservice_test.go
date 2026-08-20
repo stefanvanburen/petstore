@@ -2,12 +2,11 @@ package petstoreservice
 
 import (
 	"context"
-	"errors"
 	"testing"
 
 	petv1 "buf.build/gen/go/acme/petapis/protocolbuffers/go/pet/v1"
 	"connectrpc.com/connect"
-	"go.akshayshah.org/attest"
+	"go.vanburen.xyz/ok"
 )
 
 func TestPetStoreService(t *testing.T) {
@@ -23,31 +22,32 @@ func TestPetStoreService(t *testing.T) {
 		PetType: givenPet.PetType,
 		Name:    givenPet.Name,
 	}))
-	attest.Ok(t, err)
+	ok.MustNoError(t, err)
 	gotPutPet := putPetResponse.Msg.Pet
-	attest.Equal(t, gotPutPet.Name, givenPet.Name)
-	attest.Equal(t, gotPutPet.PetType, givenPet.PetType)
+	ok.Equal(t, gotPutPet.Name, givenPet.Name)
+	ok.Equal(t, gotPutPet.PetType, givenPet.PetType)
 
 	petID := putPetResponse.Msg.Pet.PetId
 
 	getPetResponse, err := petstoreservice.GetPet(ctx, connect.NewRequest(&petv1.GetPetRequest{
 		PetId: petID,
 	}))
-	attest.Ok(t, err)
+	ok.MustNoError(t, err)
 	gotGetPet := getPetResponse.Msg.Pet
-	attest.Equal(t, gotGetPet.Name, givenPet.Name)
-	attest.Equal(t, gotGetPet.PetType, givenPet.PetType)
+	ok.Equal(t, gotGetPet.Name, givenPet.Name)
+	ok.Equal(t, gotGetPet.PetType, givenPet.PetType)
 
 	_, err = petstoreservice.DeletePet(ctx, connect.NewRequest(&petv1.DeletePetRequest{
 		PetId: petID,
 	}))
-	attest.Ok(t, err)
+	ok.MustNoError(t, err)
 
 	_, err = petstoreservice.GetPet(ctx, connect.NewRequest(&petv1.GetPetRequest{
 		PetId: putPetResponse.Msg.Pet.PetId,
 	}))
-	var connectErr *connect.Error
-	isConnectErr := errors.As(err, &connectErr)
-	attest.True(t, isConnectErr)
-	attest.Equal(t, connectErr.Code(), connect.CodeNotFound)
+	connectErr, isConnectErr := ok.ErrorAs[*connect.Error](t, err)
+	if !isConnectErr {
+		return
+	}
+	ok.Equal(t, connectErr.Code(), connect.CodeNotFound)
 }
