@@ -2,22 +2,22 @@ package petstoreservice
 
 import (
 	"time"
+	"uuid"
 
 	petv1 "buf.build/gen/go/acme/petapis/protocolbuffers/go/pet/v1"
-	"github.com/oklog/ulid/v2"
 	"google.golang.org/genproto/googleapis/type/datetime"
 	"google.golang.org/protobuf/types/known/durationpb"
 )
 
 type pet struct {
-	id        ulid.ULID
+	id        uuid.UUID
 	typ       petv1.PetType
 	name      string
 	createdAt time.Time
 }
 
 func newPet(petType petv1.PetType, name string, createdAt time.Time) *pet {
-	petID := ulid.Make()
+	petID := uuid.NewV7()
 	return &pet{
 		id:        petID,
 		typ:       petType,

@@ -4,22 +4,22 @@ import (
 	"context"
 	"fmt"
 	"sync"
+	"uuid"
 
 	petv1 "buf.build/gen/go/acme/petapis/protocolbuffers/go/pet/v1"
 	"connectrpc.com/connect"
-	"github.com/oklog/ulid/v2"
 )
 
 type PetStoreService struct {
 	sync.Mutex
-	pets map[ulid.ULID]*pet
+	pets map[uuid.UUID]*pet
 
 	clock clock
 }
 
 func New() *PetStoreService {
 	return &PetStoreService{
-		pets:  map[ulid.ULID]*pet{},
+		pets:  map[uuid.UUID]*pet{},
 		clock: systemClock{},
 	}
 }
@@ -30,7 +30,7 @@ func (s *PetStoreService) GetPet(
 ) (*connect.Response[petv1.GetPetResponse], error) {
 	s.Lock()
 	defer s.Unlock()
-	petID, err := ulid.Parse(req.Msg.PetId)
+	petID, err := uuid.Parse(req.Msg.PetId)
 	if err != nil {
 		return nil, connect.NewError(connect.CodeInvalidArgument, fmt.Errorf("parsing pet id: %s", err))
 	}
@@ -58,7 +58,7 @@ func (s *PetStoreService) DeletePet(
 ) (*connect.Response[petv1.DeletePetResponse], error) {
 	s.Lock()
 	defer s.Unlock()
-	petID, err := ulid.Parse(req.Msg.PetId)
+	petID, err := uuid.Parse(req.Msg.PetId)
 	if err != nil {
 		return nil, connect.NewError(connect.CodeInvalidArgument, fmt.Errorf("parsing pet id: %s", err))
 	}
@@ -75,7 +75,7 @@ func (s *PetStoreService) PurchasePet(
 ) (*connect.Response[petv1.PurchasePetResponse], error) {
 	s.Lock()
 	defer s.Unlock()
-	petID, err := ulid.Parse(req.Msg.PetId)
+	petID, err := uuid.Parse(req.Msg.PetId)
 	if err != nil {
 		return nil, connect.NewError(connect.CodeInvalidArgument, fmt.Errorf("parsing pet id: %s", err))
 	}
