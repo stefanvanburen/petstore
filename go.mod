@@ -12,7 +12,7 @@ require (
 	github.com/jub0bs/cors v1.1.0
 	go.vanburen.xyz/ok v0.4.0
 	google.golang.org/genproto v0.0.0-20241216192217-9240e9c98484
-	google.golang.org/protobuf v1.36.11
+	google.golang.org/protobuf v1.36.12
 	rsc.io/markdown v0.0.0-20241212154241-6bf72452917f
 )
 
