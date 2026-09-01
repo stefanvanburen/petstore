@@ -9,7 +9,7 @@ require (
 	connectrpc.com/cors v0.1.0
 	connectrpc.com/grpcreflect v1.3.0
 	github.com/jba/templatecheck v0.7.1
-	github.com/jub0bs/cors v1.0.5
+	github.com/jub0bs/cors v1.1.0
 	go.vanburen.xyz/ok v0.4.0
 	google.golang.org/genproto v0.0.0-20241216192217-9240e9c98484
 	google.golang.org/protobuf v1.36.11
@@ -23,13 +23,13 @@ require (
 	github.com/google/safehtml v0.0.2 // indirect
 	github.com/stefanvanburen/colorcmp v0.3.0 // indirect
 	golang.org/x/exp/typeparams v0.0.0-20231108232855-2478ac86f678 // indirect
-	golang.org/x/mod v0.37.0 // indirect
-	golang.org/x/net v0.57.0 // indirect
+	golang.org/x/mod v0.38.0 // indirect
+	golang.org/x/net v0.58.0 // indirect
 	golang.org/x/sync v0.22.0 // indirect
 	golang.org/x/sys v0.47.0 // indirect
 	golang.org/x/term v0.45.0 // indirect
-	golang.org/x/text v0.40.0 // indirect
-	golang.org/x/tools v0.47.0 // indirect
+	golang.org/x/text v0.41.0 // indirect
+	golang.org/x/tools v0.48.0 // indirect
 	honnef.co/go/tools v0.8.0 // indirect
 	znkr.io/diff v1.0.0 // indirect
 )
