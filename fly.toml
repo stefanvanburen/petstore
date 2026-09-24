@@ -4,7 +4,7 @@
 #
 
 app = 'petstore'
-primary_region = 'bos'
+primary_region = 'iad'
 
 [http_service]
   internal_port = 54321
