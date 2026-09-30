@@ -4,8 +4,8 @@ buf.build/gen/go/acme/petapis/connectrpc/go v1.20.0-20220907172654-7abdb7802c8f.
 buf.build/gen/go/acme/petapis/connectrpc/go v1.20.0-20220907172654-7abdb7802c8f.1/go.mod h1:8UPR8QTqzAr/fioebp4rwKERo/aTS/DuQMi6WiiAKqA=
 buf.build/gen/go/acme/petapis/protocolbuffers/go v1.36.12-20220907172654-7abdb7802c8f.1 h1:LY1zUz0peWJRhuZ0M/FkqH4zJEMMT8eXqjGj9rHCD7M=
 buf.build/gen/go/acme/petapis/protocolbuffers/go v1.36.12-20220907172654-7abdb7802c8f.1/go.mod h1:Xqs8TfuI6YvS27fuLDRRwv7HNhZd5esSUmBN/wUYBY0=
-connectrpc.com/connect v1.20.0 h1:6TNDAB+WeNd2uolWNlYczB5E0KNNaVMNUEx8JEUsPmQ=
-connectrpc.com/connect v1.20.0/go.mod h1:A2ygJrukXwWy32vkCAAHNVguZrqZ+jeZ9rGRnGR4dN4=
+connectrpc.com/connect v1.21.0 h1:LhqSJt7jHf5NJBo9Jq/t/9FjcYAideif0mg+qe2jCUs=
+connectrpc.com/connect v1.21.0/go.mod h1:A2ygJrukXwWy32vkCAAHNVguZrqZ+jeZ9rGRnGR4dN4=
 connectrpc.com/cors v0.1.0 h1:f3gTXJyDZPrDIZCQ567jxfD9PAIpopHiRDnJRt3QuOQ=
 connectrpc.com/cors v0.1.0/go.mod h1:v8SJZCPfHtGH1zsm+Ttajpozd4cYIUryl4dFB6QEpfg=
 connectrpc.com/grpcreflect v1.3.0 h1:Y4V+ACf8/vOb1XOc251Qun7jMB75gCUNw6llvB9csXc=
