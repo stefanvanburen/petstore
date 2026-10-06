@@ -24,8 +24,8 @@ github.com/stefanvanburen/colorcmp v0.3.0 h1:qRuWEVGoss4QQt4uQXrqaYsg8INFucQnjxN
 github.com/stefanvanburen/colorcmp v0.3.0/go.mod h1:ETpGxte4uvgOUaAzV0/evd1+K1nVCP9w7EWSG1MqvqE=
 github.com/yuin/goldmark v1.6.0 h1:boZcn2GTjpsynOsC0iJHnBWa4Bi0qzfJjthwauItG68=
 github.com/yuin/goldmark v1.6.0/go.mod h1:6yULJ656Px+3vBD8DxQVa3kxgyrAnzto9xy5taEt/CY=
-go.vanburen.xyz/ok v0.4.0 h1:XuJZ1AmGp5kTtwuKmt1c4YGHtFKqdD11VqrVC/xnC0c=
-go.vanburen.xyz/ok v0.4.0/go.mod h1:qhDBRj0ibwVZ0Py9C7689nO3xirADop7E2jNflCrNV0=
+go.vanburen.xyz/ok v0.7.0 h1:4KyaEtaGlf9yWKKFnSujEtsqpX/nYfCzkBnX8OEONfU=
+go.vanburen.xyz/ok v0.7.0/go.mod h1:qhDBRj0ibwVZ0Py9C7689nO3xirADop7E2jNflCrNV0=
 golang.org/x/exp/typeparams v0.0.0-20231108232855-2478ac86f678 h1:1P7xPZEwZMoBoz0Yze5Nx2/4pxj6nw9ZqHWXqP0iRgQ=
 golang.org/x/exp/typeparams v0.0.0-20231108232855-2478ac86f678/go.mod h1:AbB0pIl9nAr9wVwH+Z2ZpaocVmF5I4GyWCDIsVjR0bk=
 golang.org/x/mod v0.41.0 h1:qJmnOUb4YB+FsEuM3HcWucdZASCPGhsX6uljO6pog0c=
