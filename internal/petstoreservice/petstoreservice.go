@@ -2,86 +2,83 @@ package petstoreservice
 
 import (
 	"context"
-	"fmt"
 	"sync"
+	"time"
 	"uuid"
 
 	petv1 "buf.build/gen/go/acme/petapis/protocolbuffers/go/pet/v1"
-	"connectrpc.com/connect"
+	"connectrpc.com/connect/v2"
 )
 
 type PetStoreService struct {
 	sync.Mutex
 	pets map[uuid.UUID]*pet
-
-	clock clock
 }
 
 func New() *PetStoreService {
 	return &PetStoreService{
-		pets:  map[uuid.UUID]*pet{},
-		clock: systemClock{},
+		pets: map[uuid.UUID]*pet{},
 	}
 }
 
 func (s *PetStoreService) GetPet(
 	ctx context.Context,
-	req *connect.Request[petv1.GetPetRequest],
-) (*connect.Response[petv1.GetPetResponse], error) {
+	req *petv1.GetPetRequest,
+) (*petv1.GetPetResponse, error) {
 	s.Lock()
 	defer s.Unlock()
-	petID, err := uuid.Parse(req.Msg.PetId)
+	petID, err := uuid.Parse(req.PetId)
 	if err != nil {
-		return nil, connect.NewError(connect.CodeInvalidArgument, fmt.Errorf("parsing pet id: %s", err))
+		return nil, connect.Errorf(connect.CodeInvalidArgument, "parsing pet id: %s", err)
 	}
 	pet, ok := s.pets[petID]
 	if !ok {
-		return nil, connect.NewError(connect.CodeNotFound, fmt.Errorf("pet %q not found", petID))
+		return nil, connect.Errorf(connect.CodeNotFound, "pet %q not found", petID)
 	}
-	return connect.NewResponse(&petv1.GetPetResponse{Pet: pet.toProto()}), nil
+	return &petv1.GetPetResponse{Pet: pet.toProto()}, nil
 }
 
 func (s *PetStoreService) PutPet(
 	ctx context.Context,
-	req *connect.Request[petv1.PutPetRequest],
-) (*connect.Response[petv1.PutPetResponse], error) {
+	req *petv1.PutPetRequest,
+) (*petv1.PutPetResponse, error) {
 	s.Lock()
 	defer s.Unlock()
-	pet := newPet(req.Msg.PetType, req.Msg.Name, s.clock.Now())
+	pet := newPet(req.PetType, req.Name, time.Now())
 	s.pets[pet.id] = pet
-	return connect.NewResponse(&petv1.PutPetResponse{Pet: pet.toProto()}), nil
+	return &petv1.PutPetResponse{Pet: pet.toProto()}, nil
 }
 
 func (s *PetStoreService) DeletePet(
 	ctx context.Context,
-	req *connect.Request[petv1.DeletePetRequest],
-) (*connect.Response[petv1.DeletePetResponse], error) {
+	req *petv1.DeletePetRequest,
+) (*petv1.DeletePetResponse, error) {
 	s.Lock()
 	defer s.Unlock()
-	petID, err := uuid.Parse(req.Msg.PetId)
+	petID, err := uuid.Parse(req.PetId)
 	if err != nil {
-		return nil, connect.NewError(connect.CodeInvalidArgument, fmt.Errorf("parsing pet id: %s", err))
+		return nil, connect.Errorf(connect.CodeInvalidArgument, "parsing pet id: %s", err)
 	}
 	if _, ok := s.pets[petID]; !ok {
-		return nil, connect.NewError(connect.CodeNotFound, fmt.Errorf("pet %q not found", petID))
+		return nil, connect.Errorf(connect.CodeNotFound, "pet %q not found", petID)
 	}
 	delete(s.pets, petID)
-	return connect.NewResponse(&petv1.DeletePetResponse{}), nil
+	return &petv1.DeletePetResponse{}, nil
 }
 
 func (s *PetStoreService) PurchasePet(
 	ctx context.Context,
-	req *connect.Request[petv1.PurchasePetRequest],
-) (*connect.Response[petv1.PurchasePetResponse], error) {
+	req *petv1.PurchasePetRequest,
+) (*petv1.PurchasePetResponse, error) {
 	s.Lock()
 	defer s.Unlock()
-	petID, err := uuid.Parse(req.Msg.PetId)
+	petID, err := uuid.Parse(req.PetId)
 	if err != nil {
-		return nil, connect.NewError(connect.CodeInvalidArgument, fmt.Errorf("parsing pet id: %s", err))
+		return nil, connect.Errorf(connect.CodeInvalidArgument, "parsing pet id: %s", err)
 	}
 	if _, ok := s.pets[petID]; !ok {
-		return nil, connect.NewError(connect.CodeNotFound, fmt.Errorf("pet %q not found", petID))
+		return nil, connect.Errorf(connect.CodeNotFound, "pet %q not found", petID)
 	}
 	delete(s.pets, petID)
-	return connect.NewResponse(&petv1.PurchasePetResponse{}), nil
+	return &petv1.PurchasePetResponse{}, nil
 }

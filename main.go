@@ -11,9 +11,11 @@ import (
 	"net/http"
 	"os"
 
-	"buf.build/gen/go/acme/petapis/connectrpc/go/pet/v1/petv1connect"
+	"buf.build/gen/go/acme/petapis/connectrpc/go/v2/pet/v1/petv1connect"
+	"connectrpc.com/connect/v2"
+	"connectrpc.com/connect/v2/connecthttp"
 	connectcors "connectrpc.com/cors"
-	"connectrpc.com/grpcreflect"
+	"connectrpc.com/grpcreflect/v2"
 	"github.com/jba/templatecheck"
 	"github.com/jub0bs/cors"
 	"go.vanburen.xyz/petstore/internal/petstoreservice"
@@ -60,20 +62,12 @@ func run(ctx context.Context, out io.Writer) error {
 		return fmt.Errorf("setting up CORS: %s", err)
 	}
 
+	server := connect.NewServer()
+	petv1connect.RegisterPetStoreServiceHandler(server, petstoreservice.New())
+	grpcreflect.Register(server)
+
 	mux := http.NewServeMux()
-	{
-		petStoreServicePath, petStoreServiceHandler := petv1connect.NewPetStoreServiceHandler(petstoreservice.New())
-		mux.Handle(petStoreServicePath, corsMiddleware.Wrap(petStoreServiceHandler))
-	}
-	reflector := grpcreflect.NewStaticReflector(petv1connect.PetStoreServiceName)
-	{
-		reflectorv1Path, reflectorv1Handler := grpcreflect.NewHandlerV1(reflector)
-		mux.Handle(reflectorv1Path, corsMiddleware.Wrap(reflectorv1Handler))
-	}
-	{
-		reflectorv1alphaPath, reflectorv1alphaHandler := grpcreflect.NewHandlerV1Alpha(reflector)
-		mux.Handle(reflectorv1alphaPath, corsMiddleware.Wrap(reflectorv1alphaHandler))
-	}
+	connecthttp.Mount(corsMux{mux, corsMiddleware}, server)
 
 	logger := slog.New(slog.NewTextHandler(out, nil))
 
@@ -97,4 +91,14 @@ func run(ctx context.Context, out io.Writer) error {
 		Protocols: protocols,
 	}
 	return s.ListenAndServe()
+}
+
+// corsMux registers every handler on mux wrapped in cors.
+type corsMux struct {
+	mux  *http.ServeMux
+	cors *cors.Middleware
+}
+
+func (m corsMux) Handle(pattern string, handler http.Handler) {
+	m.mux.Handle(pattern, m.cors.Wrap(handler))
 }

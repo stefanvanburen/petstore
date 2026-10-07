@@ -3,11 +3,11 @@ module go.vanburen.xyz/petstore
 go 1.27.0
 
 require (
-	buf.build/gen/go/acme/petapis/connectrpc/go v1.21.0-20220907172654-7abdb7802c8f.1
+	buf.build/gen/go/acme/petapis/connectrpc/go/v2 v2.0.0-20220907172654-7abdb7802c8f.1
 	buf.build/gen/go/acme/petapis/protocolbuffers/go v1.36.12-20220907172654-7abdb7802c8f.2
-	connectrpc.com/connect v1.21.0
+	connectrpc.com/connect/v2 v2.0.0
 	connectrpc.com/cors v0.1.0
-	connectrpc.com/grpcreflect v1.3.1
+	connectrpc.com/grpcreflect/v2 v2.0.0
 	github.com/jba/templatecheck v0.7.1
 	github.com/jub0bs/cors v1.1.2
 	go.vanburen.xyz/ok v0.7.0
