@@ -29,8 +29,8 @@ require (
 	golang.org/x/sys v0.48.0 // indirect
 	golang.org/x/term v0.46.0 // indirect
 	golang.org/x/text v0.42.0 // indirect
-	golang.org/x/tools v0.49.0 // indirect
-	honnef.co/go/tools v0.8.0 // indirect
+	golang.org/x/tools v0.51.0 // indirect
+	honnef.co/go/tools v0.8.2 // indirect
 	znkr.io/diff v1.0.0 // indirect
 )
 
